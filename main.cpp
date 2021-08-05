@@ -16,26 +16,27 @@ int main(){
         cout<<"ingrese una opcion: ";
         cin>>opcion;
         switch (opcion)
-        {
-        case 1:
-            cout<<"Usuarios"<<endl;
-            break;
-        case 2:
-            cout<<"tareas"<<endl;
-            break;
-        case 3:
-            cout<<"Manual"<<endl;
-            break;
-        case 4:
-            cout<<"Repportes"<<endl;
-            break;
-        case 5:
-            cout<<"FIN"<<endl;
-            break;
-        default:
-            cout<<"Seleccione una opcion correcta"<<endl;
-            break;
-        }
+            {
+            case 1:
+                cout<<"Usuarios"<<endl;
+                break;
+            case 2:
+                cout<<"tareas"<<endl;
+                break;
+            case 3:
+                cout<<"Manual"<<endl;
+                break;
+            case 4:
+                cout<<"Repportes"<<endl;
+                break;
+            case 5:
+                cout<<"FIN"<<endl;
+                break;
+            default:
+                cout<<"Seleccione una opcion correcta"<<endl;
+                break;
+            }
+        
     }
 
     system("pause");
