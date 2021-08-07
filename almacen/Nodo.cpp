@@ -1,3 +1,5 @@
+#ifndef NODO_H
+#define NODO_H
 #include <iostream>
 #include "stdlib.h"
 
@@ -9,10 +11,11 @@ class Nodo
 private:
     /* data */
 public:
-    Nodo(T);
     T estu;
     Nodo * siguiente;
     Nodo * anterior;
+    Nodo(T);
+    
 };
 
 template<typename T>
@@ -22,3 +25,4 @@ Nodo<T>::Nodo(T e)
     this->siguiente=NULL;
     this->anterior = NULL;
 }
+#endif
