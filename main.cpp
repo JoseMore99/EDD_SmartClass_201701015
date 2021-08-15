@@ -13,6 +13,8 @@ void ingreso_manual();
 void manual_usu();
 void manual_tare();
 void CargarUsuarios();
+void CargarTareas();
+bool verificar_num(string);
 ListaDC<estudiante*> *List_estudiantes= new ListaDC<estudiante*>();
 ListaD<tareas*> *List_tareas= new ListaD<tareas*>();
 ListaDC<int> *prueba= new ListaDC<int>();
@@ -97,6 +99,41 @@ void CargarUsuarios(){
 
 }
 
+void CargarTareas(){
+fstream archi;
+string ruta;
+string fila;
+string nombre, materia, descripcion,fecha, hora,estado,id, carnet ;
+string mes,dia,hora;
+cout<<"INGRESE RUTA DEL ARCHIVO DE USUARIOS:"<<endl;
+    cin>>ruta;
+    archi.open(ruta, ios::in);//ABRIR ARCHIVO PARA LEER
+    if(archi.fail()){
+        cout<<"RUTA ERRONEA"<<endl;
+    }
+    getline(archi,fila);
+    while (getline(archi,fila))
+    {
+        stringstream strim(fila);
+        getline(strim,mes,',');
+        getline(strim,dia,',');
+        getline(strim,hora,',');
+        getline(strim,carnet,',');
+        getline(strim,nombre,',');
+        getline(strim,descripcion,',');
+        getline(strim,materia,',');
+        getline(strim,fecha,',');
+        getline(strim,estado,',');
+        int carnint = stoi(carnet);
+        
+        cout<<materia<<"=>";
+    }
+    
+
+    archi.close();
+
+}
+
 void ingreso_manual(){
     int opci;
     while (opci !=3)
@@ -121,7 +158,6 @@ void ingreso_manual(){
             break;
         }
     }
-    
 }
 
 void manual_usu(){
@@ -180,32 +216,62 @@ void manual_usu(){
 }
 
 void manual_tare(){
-    int opc;
-    while (opc !=4)
-    {
-        cout<<"++++++TAREA MANUAL+++++++"<<endl;
-        cout<<"1. Ingresar"<<endl;
-        cout<<"2. Modificar"<<endl;
-        cout<<"3. Eliminar"<<endl;
-        cout<<"4. Regrear"<<endl;
-        cout<<"+++++++++++++++++++++++++"<<endl;
-        cout<<"ingrese una opcion: ";
-        cin>>opc;
-        switch (opc)
+        int opc;
+        int id, carnet  ;
+        string nombre, materia, descripcion,fecha, hora,estado;
+        while (opc !=4)
         {
-        case 1:
-            cout<<"INGREADO!!"<<endl;
-            break;
-        case 2:
-            cout<<"MODIFICADO!!"<<endl;
-            break;
-        case 3:
-            cout<<"ELIMINADO!!"<<endl;
-            break;
-        default:
-        cout<<"Seleccione una opcion correcta"<<endl;
-            break;
+            cout<<"++++++TAREA MANUAL+++++++"<<endl;
+            cout<<"1. Ingresar"<<endl;
+            cout<<"2. Modificar"<<endl;
+            cout<<"3. Eliminar"<<endl;
+            cout<<"4. Regrear"<<endl;
+            cout<<"+++++++++++++++++++++++++"<<endl;
+            cout<<"ingrese una opcion: ";
+            cin>>opc;
+            switch (opc)
+            {
+            case 1:
+                cout<<"Ingresar Carnet:"<<endl;
+                cin>>carnet;
+                cout<<"Ingresar nombre:"<<endl;
+                cin>>nombre;
+                cout<<"Ingresar descripcion:"<<endl;
+                cin>>descripcion;
+                cout<<"Ingresar Materia:"<<endl;
+                cin>>materia;
+                cout<<"Ingresar fecha:"<<endl;
+                cin>>fecha;
+                cout<<"Ingresar hora:"<<endl;
+                cin>>hora;
+                cout<<"Ingresar estado:"<<endl;
+                cin>>estado;
+                tareas *nueva = new tareas(id=1,carnet,nombre, descripcion,materia,fecha, hora,estado);
+                cout<<"INGREADO!!"<<endl;
+                break;
+            case 2:
+                cout<<"MODIFICADO!!"<<endl;
+                break;
+            case 3:
+                cout<<"ELIMINADO!!"<<endl;
+                break;
+            default:
+            cout<<"Seleccione una opcion correcta"<<endl;
+                break;
+            }
         }
-    }
-    
+        
+}
+
+bool verificar_num(string val){
+    int i = 0;
+     char c;
+     for (i; i < val.size(); i++)
+     {
+         c = val[i];
+         if(isalpha(c)==1){
+             return false;
+         }
+     }
+        return true;
 }
