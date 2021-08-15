@@ -7,12 +7,12 @@ class estudiante
 private:
     /* data */
 public:
-    estudiante(int, int, string, string, string, string, int, int); //CONSTRUCTOR
-    int carnet, creditos, dpi, edad;
-    string nombre, carera, correo, pass;
+    estudiante(int, string, string, string, string, string, int, int); //CONSTRUCTOR
+    int carnet, creditos,  edad;
+    string nombre, carera, dpi,correo, pass;
 };
 
-estudiante::estudiante(int _carnet, int _dpi, string _nombre, string _carrera, string _correo, string _pass, int _creditos, int _edad)
+estudiante::estudiante(int _carnet,string _dpi, string _nombre, string _carrera, string _correo, string _pass, int _creditos, int _edad)
 { //ASIGNACION DE VALORES DEL CONSTRUCTOR
     carnet = _carnet;
     creditos = _creditos;

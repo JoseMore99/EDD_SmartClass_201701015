@@ -1,13 +1,20 @@
 #include <iostream>
+#include <sstream>
 #include "./almacen/ListaDC.cpp"
+#include "./almacen/LisstaD.cpp"
 #include "estudiante.cpp"
+#include "tareas.cpp"
+#include "string"
+#include "fstream"
 
 using namespace std;
 
 void ingreso_manual();
 void manual_usu();
 void manual_tare();
-ListaDC<estudiante> *List_estudiantes= new ListaDC<estudiante>();
+void CargarUsuarios();
+ListaDC<estudiante*> *List_estudiantes= new ListaDC<estudiante*>();
+ListaD<tareas*> *List_tareas= new ListaD<tareas*>();
 ListaDC<int> *prueba= new ListaDC<int>();
 
 int main(){
@@ -28,6 +35,7 @@ int main(){
             {
             case 1:
                 cout<<"Usuarios"<<endl;
+                CargarUsuarios();
                 break;
             case 2:
                 cout<<"tareas"<<endl;
@@ -51,6 +59,42 @@ int main(){
 
     system("pause");
     return 0;
+}
+
+void CargarUsuarios(){
+    ifstream archi;
+    string ruta;
+    string fila;
+    string nombre, carera, correo, pass,carnet, creditos, dpi, edad;
+    cout<<"INGRESE RUTA DEL ARCHIVO DE USUARIOS:"<<endl;
+    cin>>ruta;
+    archi.open(ruta, ios::in);//ABRIR ARCHIVO PARA LEER
+    if(archi.fail()){
+        cout<<"RUTA ERRONEA"<<endl;
+    }
+    getline(archi,fila);
+    while (getline(archi,fila))
+    {
+        stringstream strim(fila);
+        getline(strim,carnet,',');
+        getline(strim,dpi,',');
+        getline(strim,nombre,',');
+        getline(strim,carera,',');
+        getline(strim,pass,',');
+        getline(strim,creditos,',');
+        getline(strim,edad,',');
+        getline(strim,correo,',');
+        int carnint = stoi(carnet);
+        int credint =stoi(creditos);
+        int edadint= stoi(edad);
+        estudiante *nuevo = new estudiante(carnint,dpi,nombre, carera, correo, pass,credint,edadint);
+        List_estudiantes->insertar(nuevo);
+        cout<<List_estudiantes->tamanio<<endl;
+    }
+    
+
+    archi.close();
+
 }
 
 void ingreso_manual(){
@@ -82,8 +126,8 @@ void ingreso_manual(){
 
 void manual_usu(){
     int opc;
-    int carnet, creditos, dpi, edad;
-    string nombre, carera, correo, pass;
+    int carnet, creditos, edad;
+    string nombre, carera, correo,dpi, pass;
     while (opc !=4)
     {
         cout<<"++++++USUARIO MANUAL+++++++"<<endl;
@@ -97,25 +141,39 @@ void manual_usu(){
         switch (opc)
         {
         case 1:
+        {
             cout<<"Ingresar Carnet:"<<endl;
             cin>>carnet;
             cout<<"Ingresar dpi:"<<endl;
             cin>>dpi;
-            cout<<"Ingresar Carnet:"<<endl;
-            cin>>carnet;
-            cout<<"Ingresar Carnet:"<<endl;
-            cin>>carnet;
+            cout<<"Ingresar Nombre:"<<endl;
+            cin>>nombre;
+            cout<<"Ingresar Carrera:"<<endl;
+            cin>>carera;
+            cout<<"Ingresar Correo:"<<endl;
+            cin>>correo;
+            cout<<"Ingresar Contrasena:"<<endl;
+            cin>>pass;
+            cout<<"Ingresar Creditos:"<<endl;
+            cin>>creditos;
+            cout<<"Ingresar Edad:"<<endl;
+            cin>>edad;
+            estudiante *nuevo = new estudiante(carnet,dpi,nombre, carera, correo, pass,creditos,edad);
+            List_estudiantes->insertar(nuevo);
+            cout<<List_estudiantes->tamanio<<endl;
             cout<<"INGREADO!!"<<endl;
+            }
             break;
-        case 2:
+        
+        case 2:{
             cout<<"MODIFICADO!!"<<endl;
-            break;
-        case 3:
+        }break;
+        case 3:{
             cout<<"ELIMINADO!!"<<endl;
-            break;
-        default:
+        }break;
+        default:{
         cout<<"Seleccione una opcion correcta"<<endl;
-            break;
+        }break;
         }
     }
     
