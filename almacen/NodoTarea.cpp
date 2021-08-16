@@ -21,7 +21,7 @@ public:
 template<typename T>
 NodoTarea<T>::NodoTarea(T t)
 {
-    this->tarea=e;
+    this->tarea=t;
     this->siguiente=NULL;
     this->anterior = NULL;
 }

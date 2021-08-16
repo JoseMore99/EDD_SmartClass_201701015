@@ -2,10 +2,13 @@
 #include <sstream>
 #include "./almacen/ListaDC.cpp"
 #include "./almacen/LisstaD.cpp"
+#include "./almacen/cola.cpp"
 #include "estudiante.cpp"
+#include "errores.cpp"
 #include "tareas.cpp"
 #include "string"
 #include "fstream"
+#include "regex"
 
 using namespace std;
 
@@ -15,8 +18,10 @@ void manual_tare();
 void CargarUsuarios();
 void CargarTareas();
 bool verificar_num(string);
+bool verificar_correo(string);
 ListaDC<estudiante*> *List_estudiantes= new ListaDC<estudiante*>();
 ListaD<tareas*> *List_tareas= new ListaD<tareas*>();
+cola<errores*> *Cola_error = new cola<errores*>();
 ListaDC<int> *prueba= new ListaDC<int>();
 
 int main(){
@@ -68,6 +73,7 @@ void CargarUsuarios(){
     string ruta;
     string fila;
     string nombre, carera, correo, pass,carnet, creditos, dpi, edad;
+    int contador=1;
     cout<<"INGRESE RUTA DEL ARCHIVO DE USUARIOS:"<<endl;
     cin>>ruta;
     archi.open(ruta, ios::in);//ABRIR ARCHIVO PARA LEER
@@ -77,15 +83,44 @@ void CargarUsuarios(){
     getline(archi,fila);
     while (getline(archi,fila))
     {
+        contador++;
         stringstream strim(fila);
         getline(strim,carnet,',');
+        if (verificar_num(carnet)){
+            errores *newerror = new errores(1,carnet,"Letra incluida en el carnet de la linea "+ to_string(contador));
+            Cola_error->Queue(newerror);
+        }
+        if (carnet.length()!=9){
+            errores *newerror = new errores(1,carnet,"Mala estructura en el carnet de la linea "+ to_string(contador));
+            Cola_error->Queue(newerror);
+        }
         getline(strim,dpi,',');
+        if (verificar_num(dpi)){
+            errores *newerror = new errores(1,dpi,"Letra incluida en el dpi de la linea "+ to_string(contador));
+            Cola_error->Queue(newerror);
+        }
+        if (carnet.length()!=13){
+            errores *newerror = new errores(1,carnet,"Mala estructura en el carnet de la linea "+ to_string(contador));
+            Cola_error->Queue(newerror);
+        }
         getline(strim,nombre,',');
         getline(strim,carera,',');
         getline(strim,pass,',');
         getline(strim,creditos,',');
+        if (verificar_num(creditos)){
+            errores *newerror = new errores(1,creditos,"Letra incluida en los creditos de la linea "+ to_string(contador));
+            Cola_error->Queue(newerror);
+        }
         getline(strim,edad,',');
+        if (verificar_num(edad)){
+            errores *newerror = new errores(1,edad,"Letra incluida en la edad de la linea "+ to_string(contador));
+            Cola_error->Queue(newerror);
+        }
         getline(strim,correo,',');
+        if (verificar_correo(correo)){
+            errores *newerror = new errores(1,correo,"Mala estructura del correo de la linea "+ to_string(contador));
+            Cola_error->Queue(newerror);
+        }
         int carnint = stoi(carnet);
         int credint =stoi(creditos);
         int edadint= stoi(edad);
@@ -104,7 +139,7 @@ fstream archi;
 string ruta;
 string fila;
 string nombre, materia, descripcion,fecha, hora,estado,id, carnet ;
-string mes,dia,hora;
+string mes,dia;
 cout<<"INGRESE RUTA DEL ARCHIVO DE USUARIOS:"<<endl;
     cin>>ruta;
     archi.open(ruta, ios::in);//ABRIR ARCHIVO PARA LEER
@@ -231,7 +266,7 @@ void manual_tare(){
             cin>>opc;
             switch (opc)
             {
-            case 1:
+            case 1:{
                 cout<<"Ingresar Carnet:"<<endl;
                 cin>>carnet;
                 cout<<"Ingresar nombre:"<<endl;
@@ -247,7 +282,7 @@ void manual_tare(){
                 cout<<"Ingresar estado:"<<endl;
                 cin>>estado;
                 tareas *nueva = new tareas(id=1,carnet,nombre, descripcion,materia,fecha, hora,estado);
-                cout<<"INGREADO!!"<<endl;
+                cout<<"INGREADO!!"<<endl;}
                 break;
             case 2:
                 cout<<"MODIFICADO!!"<<endl;
@@ -270,8 +305,16 @@ bool verificar_num(string val){
      {
          c = val[i];
          if(isalpha(c)==1){
-             return false;
+             return true;
          }
      }
-        return true;
+        return false;
+}
+
+bool verificar_correo(string val){
+    if (regex_match(val, regex("([a-z]+)([_.a-z0-9]*)([a-z0-9]+)(@)([a-z]+)([.a-z]+)([a-z]+)"))){
+        return false;
+    } 
+
+    return true;
 }

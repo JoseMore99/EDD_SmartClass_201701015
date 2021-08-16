@@ -1,5 +1,5 @@
-#ifndef LISTADC_H
-#define LISTADC_H
+#ifndef cola_H
+#define cola_H
 
 #include <iostream>
 #include <stdlib.h>
