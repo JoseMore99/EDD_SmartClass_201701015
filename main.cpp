@@ -1,8 +1,10 @@
 #include <iostream>
 #include <sstream>
+#include <stdlib.h>
 #include "./almacen/ListaDC.cpp"
 #include "./almacen/LisstaD.cpp"
 #include "./almacen/cola.cpp"
+#include "./almacen/NodoCola.cpp"
 #include "estudiante.cpp"
 #include "errores.cpp"
 #include "tareas.cpp"
@@ -19,6 +21,9 @@ void CargarUsuarios();
 void CargarTareas();
 bool verificar_num(string);
 bool verificar_correo(string);
+void graficar_errores();
+void reportes();
+int contadorERROR = 0;
 ListaDC<estudiante*> *List_estudiantes= new ListaDC<estudiante*>();
 ListaD<tareas*> *List_tareas= new ListaD<tareas*>();
 cola<errores*> *Cola_error = new cola<errores*>();
@@ -46,13 +51,16 @@ int main(){
                 break;
             case 2:
                 cout<<"tareas"<<endl;
+                CargarTareas();
                 break;
             case 3:
                 cout<<"Manual"<<endl;
                 ingreso_manual();
                 break;
             case 4:
-                cout<<"Repportes"<<endl;
+                cout<<"Reportes"<<endl;
+                reportes();
+
                 break;
             case 5:
                 cout<<"FIN"<<endl;
@@ -87,20 +95,24 @@ void CargarUsuarios(){
         stringstream strim(fila);
         getline(strim,carnet,',');
         if (verificar_num(carnet)){
-            errores *newerror = new errores(1,carnet,"Letra incluida en el carnet de la linea "+ to_string(contador));
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,carnet,"Letra incluida en el carnet de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         if (carnet.length()!=9){
-            errores *newerror = new errores(1,carnet,"Mala estructura en el carnet de la linea "+ to_string(contador));
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,carnet,"Mala estructura en el carnet de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         getline(strim,dpi,',');
         if (verificar_num(dpi)){
-            errores *newerror = new errores(1,dpi,"Letra incluida en el dpi de la linea "+ to_string(contador));
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,dpi,"Letra incluida en el dpi de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
-        if (carnet.length()!=13){
-            errores *newerror = new errores(1,carnet,"Mala estructura en el carnet de la linea "+ to_string(contador));
+        if (dpi.length()!=13){
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,dpi,"Mala estructura en el dpi de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         getline(strim,nombre,',');
@@ -108,17 +120,20 @@ void CargarUsuarios(){
         getline(strim,pass,',');
         getline(strim,creditos,',');
         if (verificar_num(creditos)){
-            errores *newerror = new errores(1,creditos,"Letra incluida en los creditos de la linea "+ to_string(contador));
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,creditos,"Letra incluida en los creditos de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         getline(strim,edad,',');
         if (verificar_num(edad)){
-            errores *newerror = new errores(1,edad,"Letra incluida en la edad de la linea "+ to_string(contador));
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,edad,"Letra incluida en la edad de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         getline(strim,correo,',');
         if (verificar_correo(correo)){
-            errores *newerror = new errores(1,correo,"Mala estructura del correo de la linea "+ to_string(contador));
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,correo,"Mala estructura del correo de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         int carnint = stoi(carnet);
@@ -126,7 +141,7 @@ void CargarUsuarios(){
         int edadint= stoi(edad);
         estudiante *nuevo = new estudiante(carnint,dpi,nombre, carera, correo, pass,credint,edadint);
         List_estudiantes->insertar(nuevo);
-        cout<<List_estudiantes->tamanio<<endl;
+        cout<<List_estudiantes->tamanio<<"=>"<<Cola_error->tamanio<<endl;
     }
     
 
@@ -299,6 +314,7 @@ void manual_tare(){
 }
 
 bool verificar_num(string val){
+
     int i = 0;
      char c;
      for (i; i < val.size(); i++)
@@ -306,6 +322,7 @@ bool verificar_num(string val){
          c = val[i];
          if(isalpha(c)==1){
              return true;
+             cout<<"ERROR N"<<endl;
          }
      }
         return false;
@@ -315,6 +332,72 @@ bool verificar_correo(string val){
     if (regex_match(val, regex("([a-z]+)([_.a-z0-9]*)([a-z0-9]+)(@)([a-z]+)([.a-z]+)([a-z]+)"))){
         return false;
     } 
-
+    cout<<"ERROR C"<<endl;
     return true;
+}
+
+void reportes(){
+    int opci;
+    cout<<"++++++REPORTES+++++++"<<endl;
+    cout<<"1. Reporte sobre la lista de estudiantes"<<endl;
+    cout<<"2. Reporte sobre la lista de tareas linealizadas"<<endl;
+    cout<<"3. Busqueda en estructura linealizada."<<endl;
+    cout<<"4. Busqueda de posicion en lista linealizada"<<endl;
+    cout<<"5. Cola de Errores"<<endl;
+    cout<<"6. Codigo generado de salida"<<endl;
+    cout<<"+++++++++++++++++++++++++"<<endl;
+    cout<<"ingrese una opcion: ";
+    cin>>opci;
+    switch (opci)
+    {
+    case 1:
+        manual_usu();
+        break;
+    case 2:
+        manual_tare();
+        break;
+    case 4:
+        manual_tare();
+        break;
+    case 5:
+        graficar_errores();
+        break;
+    case 6:
+        manual_tare();
+        break;
+    default:
+    cout<<"Seleccione una opcion correcta"<<endl;
+        break;
+    }
+    
+}
+
+void graficar_errores(){
+    ofstream archi;
+    archi.open("Errores.dot",ios::out);
+    int contadornodo = 0;
+    if(archi.fail()){
+     cout<<"Ocurrio un error inesperado"<<endl;
+     return;
+    }
+    archi<<"digraph g {\ngraph [\nrankdir = \"LR\"\n];\nnode [\nfontsize = \"16\"\nshape = \"ellipse\"\n];\nedge [];"<<endl;
+    NodoCola<errores*> *aux = Cola_error->primero;
+    while (aux != NULL){
+        archi<<"nodo"<<contadornodo<<"[label=\" ";
+        archi<<"id:"<<aux->error->id;
+        archi<<"\\nTipo"<<aux->error->tipo;
+        archi<<"\\ndescripcion:"<<aux->error->descripcion<<"\"];"<<endl;
+        contadornodo++;
+        aux = aux->siguiente;
+    }
+    cout<<"GRAFICA REALIZADA CON EXITO"<<endl;
+    for (int i = 0; i < contadornodo-1; i++){
+        int j = i+1;
+        archi<<"nodo"<<i<<"->"<<"nodo"<<j<<endl;
+    }
+    
+    archi<<"}";
+    archi.close();
+    string cmd = "dot -Tpng Errores.dot -o Errores.png";
+    system(cmd.c_str());    
 }

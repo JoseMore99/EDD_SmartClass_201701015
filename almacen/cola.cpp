@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include "Nodo.cpp"
+#include "NodoCola.cpp"
 
 template<typename T>
 class cola   //LISTA COLA
@@ -11,8 +11,8 @@ class cola   //LISTA COLA
 private:
     /* data */
 public:
-    Nodo<T> * primero;
-    Nodo<T> * ultimo;
+    NodoCola<T> * primero;
+    NodoCola<T> * ultimo;
     int tamanio;
     cola(/* args */);
     void Queue(T e);
@@ -30,7 +30,7 @@ cola<T>::cola(/* args */)
 
 template<typename T>
 void cola<T>::Queue(T _e){
-    Nodo<T> *nuevo = new Nodo<T>(_e);
+    NodoCola<T> *nuevo = new NodoCola<T>(_e);
     if(this->primero == NULL){
         this->primero = nuevo;
         this->ultimo = nuevo;
@@ -45,7 +45,7 @@ void cola<T>::Queue(T _e){
 template<typename T>
 void cola<T>::Dequeue(){
     T valor = this->primero->estu;
-    Nodo<T> *aux = primero;
+    NodoCola<T> *aux = primero;
     if (this->primero == this->ultimo){
         this->primero= NULL;
         this->ultimo= NULL;
@@ -57,10 +57,10 @@ void cola<T>::Dequeue(){
 
 template<typename T>
 void cola<T>::imprimir(){
-    Nodo<T> *aux = primero;
+    NodoCola<T> *aux = primero;
     while (aux!=NULL)
     {
-        cout<<aux->estu<<"=>";
+        cout<<aux->error<<"=>";
         aux = aux->siguiente;
     }
     cout<<endl;
