@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "NodoTarea.cpp"
 
-template<typename T>
+template<typename T>//USO DE TEMPLATE PARA HACER UNA LISTA DE CUALQUIER TIPO
 class ListaD   //LISTA DOBLEMENTE 
 {
 private:
@@ -27,13 +27,13 @@ ListaD<T>::ListaD(/* args */)
 }
 
 template<typename T>
-void ListaD<T>::insertar(T _t){
+void ListaD<T>::insertar(T _t){//EN CASO LA LISTA ESTE VACIA
     Nodo<T> *nuevo = new Nodo<T>(_t);
     if(this->primero == NULL){
         this->primero = nuevo;
         this->ultimo = nuevo;
         this->tamanio++;
-    } else{
+    } else{//EN CASO LA LISTA TENGA MINIMO UN VALOR
         nuevo->anterior = this->ultimo;
         this->ultimo->siguiente = nuevo;
         this->ultimo = nuevo;

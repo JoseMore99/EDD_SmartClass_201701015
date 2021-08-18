@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "Nodo.cpp"
 
-template<typename T>
+template<typename T>//USO DE TEMPLATE PARA HACER UNA LISTA DE CUALQUIER TIPO
 class ListaDC   //LISTA DOBLEMENTE CIRCULAR
 {
 private:
@@ -29,11 +29,11 @@ ListaDC<T>::ListaDC(/* args */)
 template<typename T>
 void ListaDC<T>::insertar(T _e){
     Nodo<T> *nuevo = new Nodo<T>(_e);
-    if(this->primero == NULL){
+    if(this->primero == NULL){//EN CASO LA LISTA ESTE VACIA
         this->primero = nuevo;
         this->ultimo = nuevo;
         this->tamanio++;
-    } else{
+    } else{//EN CASO LA LISTA TENGA MINIMO UN VALOR
         nuevo->siguiente = this->primero;
         this->primero->anterior = nuevo;
         nuevo->anterior = this->ultimo;

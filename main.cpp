@@ -5,6 +5,7 @@
 #include "./almacen/LisstaD.cpp"
 #include "./almacen/cola.cpp"
 #include "./almacen/NodoCola.cpp"
+#include "./almacen/Nodo.cpp"
 #include "estudiante.cpp"
 #include "errores.cpp"
 #include "tareas.cpp"
@@ -22,11 +23,15 @@ void CargarTareas();
 bool verificar_num(string);
 bool verificar_correo(string);
 void graficar_errores();
+void graficar_estudiantes();
 void reportes();
+void codigo_salida();
 int contadorERROR = 0;
+int contadorTAREA = 0;
 ListaDC<estudiante*> *List_estudiantes= new ListaDC<estudiante*>();
 ListaD<tareas*> *List_tareas= new ListaD<tareas*>();
 cola<errores*> *Cola_error = new cola<errores*>();
+tareas *cubotarea [5][30][8];
 ListaDC<int> *prueba= new ListaDC<int>();
 
 int main(){
@@ -96,23 +101,23 @@ void CargarUsuarios(){
         getline(strim,carnet,',');
         if (verificar_num(carnet)){
             contadorERROR++;
-            errores *newerror = new errores(contadorERROR,carnet,"Letra incluida en el carnet de la linea "+ to_string(contador));
+            errores *newerror = new errores(contadorERROR,"Estudiante","Letra incluida en el carnet de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         if (carnet.length()!=9){
             contadorERROR++;
-            errores *newerror = new errores(contadorERROR,carnet,"Mala estructura en el carnet de la linea "+ to_string(contador));
+            errores *newerror = new errores(contadorERROR,"Estudiante","Mala estructura en el carnet de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         getline(strim,dpi,',');
         if (verificar_num(dpi)){
             contadorERROR++;
-            errores *newerror = new errores(contadorERROR,dpi,"Letra incluida en el dpi de la linea "+ to_string(contador));
+            errores *newerror = new errores(contadorERROR,"Estudiante","Letra incluida en el dpi de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         if (dpi.length()!=13){
             contadorERROR++;
-            errores *newerror = new errores(contadorERROR,dpi,"Mala estructura en el dpi de la linea "+ to_string(contador));
+            errores *newerror = new errores(contadorERROR,"Estudiante","Mala estructura en el dpi de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         getline(strim,nombre,',');
@@ -121,19 +126,19 @@ void CargarUsuarios(){
         getline(strim,creditos,',');
         if (verificar_num(creditos)){
             contadorERROR++;
-            errores *newerror = new errores(contadorERROR,creditos,"Letra incluida en los creditos de la linea "+ to_string(contador));
+            errores *newerror = new errores(contadorERROR,"Estudiante","Letra incluida en los creditos de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         getline(strim,edad,',');
         if (verificar_num(edad)){
             contadorERROR++;
-            errores *newerror = new errores(contadorERROR,edad,"Letra incluida en la edad de la linea "+ to_string(contador));
+            errores *newerror = new errores(contadorERROR,"Estudiante","Letra incluida en la edad de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         getline(strim,correo,',');
         if (verificar_correo(correo)){
             contadorERROR++;
-            errores *newerror = new errores(contadorERROR,correo,"Mala estructura del correo de la linea "+ to_string(contador));
+            errores *newerror = new errores(contadorERROR,"Estudiante","Mala estructura del correo de la linea "+ to_string(contador));
             Cola_error->Queue(newerror);
         }
         int carnint = stoi(carnet);
@@ -155,7 +160,7 @@ string ruta;
 string fila;
 string nombre, materia, descripcion,fecha, hora,estado,id, carnet ;
 string mes,dia;
-cout<<"INGRESE RUTA DEL ARCHIVO DE USUARIOS:"<<endl;
+cout<<"INGRESE RUTA DEL ARCHIVO DE TAREAS:"<<endl;
     cin>>ruta;
     archi.open(ruta, ios::in);//ABRIR ARCHIVO PARA LEER
     if(archi.fail()){
@@ -164,6 +169,7 @@ cout<<"INGRESE RUTA DEL ARCHIVO DE USUARIOS:"<<endl;
     getline(archi,fila);
     while (getline(archi,fila))
     {
+        contadorTAREA++;
         stringstream strim(fila);
         getline(strim,mes,',');
         getline(strim,dia,',');
@@ -175,7 +181,11 @@ cout<<"INGRESE RUTA DEL ARCHIVO DE USUARIOS:"<<endl;
         getline(strim,fecha,',');
         getline(strim,estado,',');
         int carnint = stoi(carnet);
-        
+        int mesint = stoi(mes);
+        int diaint= stoi (dia);
+        int horaint = stoi(hora);
+        tareas *nueva = new tareas(contadorTAREA,carnint,nombre, descripcion,materia,fecha, horaint,estado);
+        cubotarea[mesint-6][diaint][horaint]=nueva;
         cout<<materia<<"=>";
     }
     
@@ -267,8 +277,8 @@ void manual_usu(){
 
 void manual_tare(){
         int opc;
-        int id, carnet  ;
-        string nombre, materia, descripcion,fecha, hora,estado;
+        int carnet , hora ;
+        string nombre, materia, descripcion,fecha,estado;
         while (opc !=4)
         {
             cout<<"++++++TAREA MANUAL+++++++"<<endl;
@@ -296,7 +306,8 @@ void manual_tare(){
                 cin>>hora;
                 cout<<"Ingresar estado:"<<endl;
                 cin>>estado;
-                tareas *nueva = new tareas(id=1,carnet,nombre, descripcion,materia,fecha, hora,estado);
+                contadorTAREA++;
+                tareas *nueva = new tareas(contadorTAREA,carnet,nombre, descripcion,materia,fecha, hora,estado);
                 cout<<"INGREADO!!"<<endl;}
                 break;
             case 2:
@@ -351,7 +362,7 @@ void reportes(){
     switch (opci)
     {
     case 1:
-        manual_usu();
+        graficar_estudiantes();
         break;
     case 2:
         manual_tare();
@@ -363,7 +374,7 @@ void reportes(){
         graficar_errores();
         break;
     case 6:
-        manual_tare();
+        codigo_salida();
         break;
     default:
     cout<<"Seleccione una opcion correcta"<<endl;
@@ -380,7 +391,7 @@ void graficar_errores(){
      cout<<"Ocurrio un error inesperado"<<endl;
      return;
     }
-    archi<<"digraph g {\ngraph [\nrankdir = \"LR\"\n];\nnode [\nfontsize = \"16\"\nshape = \"ellipse\"\n];\nedge [];"<<endl;
+    archi<<"digraph g {\ngraph [];\nnode [\nfontsize = \"16\"\nshape = \"ellipse\"\n];\nedge [];"<<endl;
     NodoCola<errores*> *aux = Cola_error->primero;
     while (aux != NULL){
         archi<<"nodo"<<contadornodo<<"[label=\" ";
@@ -400,4 +411,67 @@ void graficar_errores(){
     archi.close();
     string cmd = "dot -Tpng Errores.dot -o Errores.png";
     system(cmd.c_str());    
+}
+
+void graficar_estudiantes(){
+    ofstream archi;
+    archi.open("Estudiantes.dot",ios::out);
+    int contadornodo = 0;
+    if(archi.fail()){
+     cout<<"Ocurrio un error inesperado"<<endl;
+     return;
+    }
+    archi<<"digraph g {\ngraph [\nrankdir = \"LR\"\n];\nnode [\nfontsize = \"16\"\nshape = \"ellipse\"\n];\nedge [];"<<endl;
+    Nodo<estudiante*> *aux = List_estudiantes->primero;
+    do {
+        archi<<"nodo"<<contadornodo<<"[label=\" ";
+        archi<<"carnet:"<<aux->estu->carnet;
+        archi<<"\\ndpi:"<<aux->estu->dpi;
+        archi<<"\\nnombre:"<<aux->estu->nombre;
+        archi<<"\\ncarrera:"<<aux->estu->carera;
+        archi<<"\\npassword:"<<aux->estu->pass;
+        archi<<"\\ncreditos:"<<aux->estu->creditos;
+        archi<<"\\nedad:"<<aux->estu->edad<<"\"];"<<endl;
+        contadornodo++;
+        aux = aux->siguiente;
+    }while (aux != List_estudiantes->primero);
+    cout<<"GRAFICA REALIZADA CON EXITO"<<endl;
+    for (int i = 0; i < contadornodo-1; i++){
+        int j = i+1;
+        archi<<"nodo"<<i<<"->"<<"nodo"<<j<<endl;
+        archi<<"nodo"<<j<<"->"<<"nodo"<<i<<endl;
+    }
+
+    archi<<"nodo0->"<<"nodo"<<(contadornodo-1)<<endl;
+    archi<<"nodo"<<(contadornodo-1)<<"->"<<"nodo0"<<endl;
+    archi<<"}";
+    archi.close();
+    string cmd = "dot -Tpng Estudiantes.dot -o Estudiantes.png";
+    system(cmd.c_str());    
+}
+
+void codigo_salida(){
+    ofstream archi;
+    archi.open("Estudiantes.txt",ios::out);
+    if(archi.fail()){
+     cout<<"Ocurrio un error inesperado"<<endl;
+     return;
+    }
+    archi<<"¿Elements?"<<endl;
+    Nodo<estudiante*> *aux = List_estudiantes->primero;
+    do {
+        archi<<"    ¿element type=\"user\"?"<<endl;
+        archi<<"        ¿item Carnet=\""<<aux->estu->carnet<<"\"$?"<<endl;
+        archi<<"        ¿item Dpi=\""<<aux->estu->dpi<<"\"$?"<<endl;
+        archi<<"        ¿item Nombre=\""<<aux->estu->nombre<<"\"$?"<<endl;
+        archi<<"        ¿item Carrera=\""<<aux->estu->carera<<"\"$?"<<endl;
+        archi<<"        ¿item Password=\""<<aux->estu->pass<<"\"$?"<<endl;
+        archi<<"        ¿item Creditos=\""<<aux->estu->creditos<<"\"$?"<<endl;
+        archi<<"        ¿item Edad=\""<<aux->estu->edad<<"\"$?"<<endl;
+        archi<<"    ¿$element type=\"user\"?"<<endl;
+        aux = aux->siguiente;
+    }while (aux != List_estudiantes->primero);
+    archi<<"¿$Elements?";
+    cout<<"ARCHIVO DE SALIDA REALIZADO CON EXITO"<<endl;
+   
 }

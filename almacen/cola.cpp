@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "NodoCola.cpp"
 
-template<typename T>
+template<typename T>//USO DE TEMPLATE PARA HACER UNA LISTA DE CUALQUIER TIPO
 class cola   //LISTA COLA
 {
 private:
@@ -29,12 +29,12 @@ cola<T>::cola(/* args */)
 }
 
 template<typename T>
-void cola<T>::Queue(T _e){
+void cola<T>::Queue(T _e){//ENCOLAR
     NodoCola<T> *nuevo = new NodoCola<T>(_e);
-    if(this->primero == NULL){
+    if(this->primero == NULL){//En caso la cola esta vacia
         this->primero = nuevo;
         this->ultimo = nuevo;
-    } else{
+    } else{// EN CASO EXISTA MINIMO UN VAOR EN LA COLA
         this->ultimo->siguiente = nuevo;
         this->ultimo = nuevo;
     }
@@ -43,7 +43,7 @@ void cola<T>::Queue(T _e){
 }
 
 template<typename T>
-void cola<T>::Dequeue(){
+void cola<T>::Dequeue(){//DESENCOLAR
     T valor = this->primero->estu;
     NodoCola<T> *aux = primero;
     if (this->primero == this->ultimo){
@@ -56,7 +56,7 @@ void cola<T>::Dequeue(){
 }
 
 template<typename T>
-void cola<T>::imprimir(){
+void cola<T>::imprimir(){//DE USO SOLO SI NO  SE USARON OBJETOS ;D
     NodoCola<T> *aux = primero;
     while (aux!=NULL)
     {
