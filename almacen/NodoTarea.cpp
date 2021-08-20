@@ -2,24 +2,24 @@
 #define NODOTarea_H
 #include <iostream>
 #include "stdlib.h"
+#include "..\tareas.cpp"
 
 using namespace std;
 
-template<typename T>
+
 class NodoTarea
 {
 private:
     /* data */
 public:
-    T tarea;
+    tareas *tarea;
     NodoTarea * siguiente;
     NodoTarea * anterior;
-    NodoTarea(T);
+    NodoTarea(tareas*);
     
 };
 
-template<typename T>
-NodoTarea<T>::NodoTarea(T t)
+NodoTarea::NodoTarea(tareas *t)
 {
     this->tarea=t;
     this->siguiente=NULL;

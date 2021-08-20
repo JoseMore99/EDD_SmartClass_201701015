@@ -1,5 +1,6 @@
 #include <iostream>
-
+#ifndef ESTUDIANTE_H
+#define ESTUDIANTE_H
 using namespace std;
 
 class estudiante
@@ -23,3 +24,4 @@ estudiante::estudiante(int _carnet,string _dpi, string _nombre, string _carrera,
     correo = _correo;
     pass = _pass;
 }
+#endif

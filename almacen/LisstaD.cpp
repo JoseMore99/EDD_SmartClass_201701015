@@ -4,42 +4,90 @@
 #include <iostream>
 #include <stdlib.h>
 #include "NodoTarea.cpp"
+#include "..\tareas.cpp"
 
-template<typename T>//USO DE TEMPLATE PARA HACER UNA LISTA DE CUALQUIER TIPO
+
 class ListaD   //LISTA DOBLEMENTE 
 {
 private:
     /* data */
 public:
-    Nodo<T> * primero;
-    Nodo<T> * ultimo;
+    NodoTarea * primero;
     int tamanio;
     ListaD(/* args */);
-    void insertar(T e);
+    void insertar(tareas *t);
+    void imprimir();
+    void buscar(int, int, int);
 };
 
-template<typename T>
-ListaD<T>::ListaD(/* args */)
+ListaD::ListaD(/* args */)
 {
     this->primero = NULL;//VALORES INICIALES DE CABECERAS
-    this->ultimo = NULL;
     this->tamanio = 0;
 }
 
-template<typename T>
-void ListaD<T>::insertar(T _t){//EN CASO LA LISTA ESTE VACIA
-    Nodo<T> *nuevo = new Nodo<T>(_t);
+void ListaD::insertar(tareas *_t){//EN CASO LA LISTA ESTE VACIA
+    NodoTarea *nuevo = new NodoTarea(_t);
+    this->tamanio++;
     if(this->primero == NULL){
         this->primero = nuevo;
-        this->ultimo = nuevo;
-        this->tamanio++;
-    } else{//EN CASO LA LISTA TENGA MINIMO UN VALOR
-        nuevo->anterior = this->ultimo;
-        this->ultimo->siguiente = nuevo;
-        this->ultimo = nuevo;
-        this->tamanio++;
+    } else{//EN CASO LA LISTA TENGA MINIMO UN VALOR INSERTAR EN ORDEN
+        NodoTarea *aux = this->primero;
+        while (aux!=NULL)
+        {
+            if (aux->tarea->pocision>nuevo->tarea->pocision){
+                cout<<aux->tarea->pocision<<"->"<<nuevo->tarea->pocision<<endl;
+                if (aux == this->primero){
+                    nuevo->siguiente= aux;
+                    aux->anterior=nuevo;
+                    this->primero= nuevo;
+                }else{
+                aux->anterior->siguiente= nuevo;
+                nuevo->siguiente=aux;
+                nuevo->anterior=aux->anterior;
+                aux->anterior = nuevo;}
+                return;
+            }
+            aux = aux->siguiente;
+        }
+        NodoTarea *aux2 = this->primero;
+        while (aux2->siguiente!=NULL)
+        {
+            aux2 = aux2->siguiente;
+        }
+        aux2->siguiente= nuevo;
+        nuevo->anterior= aux2;
     }
     
+}
+
+void ListaD::buscar(int mes, int dia, int hora){
+    NodoTarea *aux = this->primero;
+    int este =(dia*30+hora)*5+mes;;
+    while (aux!=NULL)
+    {
+        if (aux->tarea->pocision==este){
+        cout<<" Carnet=\""<<aux->tarea->carnet<<"\"$?"<<endl;
+        cout<<" Nombre=\""<<aux->tarea->nombre<<"\"$?"<<endl;
+        cout<<" Descripcion=\""<<aux->tarea->descripcion<<"\"$?"<<endl;
+        cout<<" Materia=\""<<aux->tarea->materia<<"\"$?"<<endl;
+        cout<<" Fecha=\""<<aux->tarea->fecha<<"\"$?"<<endl;
+        cout<<" Hora=\""<<aux->tarea->hora<<"\"$?"<<endl;
+        cout<<" Estado=\""<<aux->tarea->estado<<"\"$?"<<endl;
+        return ;
+        }
+        aux = aux->siguiente;
+    }
+    cout<<"LA TAREA NO EXISTE"<<endl;
+}
+
+void ListaD::imprimir(){
+    NodoTarea *aux = this->primero;
+        while (aux!=NULL)
+        {
+            cout<<aux->tarea->pocision<<"=>";
+            aux = aux->siguiente;
+        }
 }
 /*ListaD::~ListaD()
 {

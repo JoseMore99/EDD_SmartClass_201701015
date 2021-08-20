@@ -4,31 +4,29 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Nodo.cpp"
+#include "..\estudiante.cpp"
 
-template<typename T>//USO DE TEMPLATE PARA HACER UNA LISTA DE CUALQUIER TIPO
 class ListaDC   //LISTA DOBLEMENTE CIRCULAR
 {
 private:
     /* data */
 public:
-    Nodo<T> * primero;
-    Nodo<T> * ultimo;
+    Nodo * primero;
+    Nodo * ultimo;
     int tamanio;
     ListaDC(/* args */);
-    void insertar(T e);
+    void insertar(estudiante *e);
 };
 
-template<typename T>
-ListaDC<T>::ListaDC(/* args */)
+ListaDC::ListaDC(/* args */)
 {
     this->primero = NULL;//VALORES INICIALES DE CABECERAS
     this->ultimo = NULL;
     this->tamanio = 0;
 }
 
-template<typename T>
-void ListaDC<T>::insertar(T _e){
-    Nodo<T> *nuevo = new Nodo<T>(_e);
+void ListaDC::insertar(estudiante *_e){
+    Nodo *nuevo = new Nodo(_e);
     if(this->primero == NULL){//EN CASO LA LISTA ESTE VACIA
         this->primero = nuevo;
         this->ultimo = nuevo;

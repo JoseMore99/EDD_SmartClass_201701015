@@ -5,6 +5,7 @@
 #include "./almacen/LisstaD.cpp"
 #include "./almacen/cola.cpp"
 #include "./almacen/NodoCola.cpp"
+#include "./almacen/NodoTarea.cpp"
 #include "./almacen/Nodo.cpp"
 #include "estudiante.cpp"
 #include "errores.cpp"
@@ -24,15 +25,16 @@ bool verificar_num(string);
 bool verificar_correo(string);
 void graficar_errores();
 void graficar_estudiantes();
+void graficar_tareas();
 void reportes();
 void codigo_salida();
 int contadorERROR = 0;
 int contadorTAREA = 0;
-ListaDC<estudiante*> *List_estudiantes= new ListaDC<estudiante*>();
-ListaD<tareas*> *List_tareas= new ListaD<tareas*>();
+ListaDC *List_estudiantes= new ListaDC();
+ListaD *List_tareas= new ListaD();
 cola<errores*> *Cola_error = new cola<errores*>();
 tareas *cubotarea [5][30][8];
-ListaDC<int> *prueba= new ListaDC<int>();
+ListaDC*prueba= new ListaDC();
 
 int main(){
     
@@ -184,12 +186,14 @@ cout<<"INGRESE RUTA DEL ARCHIVO DE TAREAS:"<<endl;
         int mesint = stoi(mes);
         int diaint= stoi (dia);
         int horaint = stoi(hora);
-        tareas *nueva = new tareas(contadorTAREA,carnint,nombre, descripcion,materia,fecha, horaint,estado);
+        int pocision=(diaint*30+horaint)*5+mesint;
+        tareas *nueva = new tareas(contadorTAREA,carnint,nombre, descripcion,materia,fecha, horaint,estado,pocision);
         cubotarea[mesint-6][diaint][horaint]=nueva;
-        cout<<materia<<"=>";
+        //cout<<materia<<"=>";
+        List_tareas->insertar(nueva);
     }
     
-
+    List_tareas->imprimir();
     archi.close();
 
 }
@@ -277,7 +281,7 @@ void manual_usu(){
 
 void manual_tare(){
         int opc;
-        int carnet , hora ;
+        int carnet , hora,mes, dia ;
         string nombre, materia, descripcion,fecha,estado;
         while (opc !=4)
         {
@@ -292,6 +296,12 @@ void manual_tare(){
             switch (opc)
             {
             case 1:{
+                cout<<"Ingresar Mes"<<endl;
+                cin>>mes;
+                cout<<"Ingresar dia"<<endl;
+                cin>>dia;
+                cout<<"Ingresar hora:"<<endl;
+                cin>>hora;
                 cout<<"Ingresar Carnet:"<<endl;
                 cin>>carnet;
                 cout<<"Ingresar nombre:"<<endl;
@@ -302,12 +312,11 @@ void manual_tare(){
                 cin>>materia;
                 cout<<"Ingresar fecha:"<<endl;
                 cin>>fecha;
-                cout<<"Ingresar hora:"<<endl;
-                cin>>hora;
                 cout<<"Ingresar estado:"<<endl;
                 cin>>estado;
                 contadorTAREA++;
-                tareas *nueva = new tareas(contadorTAREA,carnet,nombre, descripcion,materia,fecha, hora,estado);
+                int pocision =(dia*30+hora)*5+mes;;
+                tareas *nueva = new tareas(contadorTAREA,carnet,nombre, descripcion,materia,fecha, hora,estado, pocision);
                 cout<<"INGREADO!!"<<endl;}
                 break;
             case 2:
@@ -365,10 +374,30 @@ void reportes(){
         graficar_estudiantes();
         break;
     case 2:
-        manual_tare();
+        graficar_tareas();
         break;
-    case 4:
-        manual_tare();
+    case 3:{
+        int mes,  dia, hora;
+        cout<<"Ingresar Mes"<<endl;
+        cin>>mes;
+        cout<<"Ingresar dia"<<endl;
+        cin>>dia;
+        cout<<"Ingresar hora:"<<endl;
+        cin>>hora;
+        List_tareas->buscar(mes,dia,hora);
+    }
+        break;
+    case 4:{
+        int mes,  dia, hora;
+        cout<<"Ingresar Mes"<<endl;
+        cin>>mes;
+        cout<<"Ingresar dia"<<endl;
+        cin>>dia;
+        cout<<"Ingresar hora:"<<endl;
+        cin>>hora;
+        int este =(dia*30+hora)*5+mes;;
+        cout<<"La pocision de esta tarea es:"<<este<<endl;
+    }
         break;
     case 5:
         graficar_errores();
@@ -422,7 +451,7 @@ void graficar_estudiantes(){
      return;
     }
     archi<<"digraph g {\ngraph [\nrankdir = \"LR\"\n];\nnode [\nfontsize = \"16\"\nshape = \"ellipse\"\n];\nedge [];"<<endl;
-    Nodo<estudiante*> *aux = List_estudiantes->primero;
+    Nodo *aux = List_estudiantes->primero;
     do {
         archi<<"nodo"<<contadornodo<<"[label=\" ";
         archi<<"carnet:"<<aux->estu->carnet;
@@ -450,6 +479,40 @@ void graficar_estudiantes(){
     system(cmd.c_str());    
 }
 
+void graficar_tareas(){
+    ofstream archi;
+    archi.open("Tareas.dot",ios::out);
+    int contadornodo = 0;
+    if(archi.fail()){
+     cout<<"Ocurrio un error inesperado"<<endl;
+     return;
+    }
+    archi<<"digraph g {\ngraph [\nrankdir = \"LR\"\n];\nnode [\nfontsize = \"16\"\nshape = \"square\"\n];\nedge [];"<<endl;
+    NodoTarea *aux = List_tareas->primero;
+    while (aux != NULL){
+        archi<<"nodo"<<contadornodo<<"[label=\" ";
+        archi<<"Pocision:"<<aux->tarea->pocision;
+        archi<<"carnet:"<<aux->tarea->carnet;
+        archi<<"\\nnombre:"<<aux->tarea->nombre;
+        archi<<"\\ndescripcion:"<<aux->tarea->descripcion;
+        archi<<"\\nmateria:"<<aux->tarea->materia;
+        archi<<"\\nfecha:"<<aux->tarea->fecha;
+        archi<<"\\nestado:"<<aux->tarea->estado<<"\"];"<<endl;
+        contadornodo++;
+        aux = aux->siguiente;
+    }
+    cout<<"GRAFICA REALIZADA CON EXITO"<<endl;
+    for (int i = 0; i < contadornodo-1; i++){
+        int j = i+1;
+        archi<<"nodo"<<i<<"->"<<"nodo"<<j<<endl;
+        archi<<"nodo"<<j<<"->"<<"nodo"<<i<<endl;
+    }
+    archi<<"}";
+    archi.close();
+    string cmd = "dot -Tpng Tareas.dot -o Tareas.png";
+    system(cmd.c_str());    
+}
+
 void codigo_salida(){
     ofstream archi;
     archi.open("Estudiantes.txt",ios::out);
@@ -458,7 +521,7 @@ void codigo_salida(){
      return;
     }
     archi<<"¿Elements?"<<endl;
-    Nodo<estudiante*> *aux = List_estudiantes->primero;
+    Nodo *aux = List_estudiantes->primero;
     do {
         archi<<"    ¿element type=\"user\"?"<<endl;
         archi<<"        ¿item Carnet=\""<<aux->estu->carnet<<"\"$?"<<endl;
@@ -468,9 +531,24 @@ void codigo_salida(){
         archi<<"        ¿item Password=\""<<aux->estu->pass<<"\"$?"<<endl;
         archi<<"        ¿item Creditos=\""<<aux->estu->creditos<<"\"$?"<<endl;
         archi<<"        ¿item Edad=\""<<aux->estu->edad<<"\"$?"<<endl;
-        archi<<"    ¿$element type=\"user\"?"<<endl;
+        archi<<"    ¿$element?"<<endl;
         aux = aux->siguiente;
     }while (aux != List_estudiantes->primero);
+    NodoTarea *aux2 = List_tareas->primero;
+    while (aux2 != NULL)
+    {
+        archi<<"    ¿element type=\"task\"?"<<endl;
+        archi<<"        ¿item Carnet=\""<<aux2->tarea->carnet<<"\"$?"<<endl;
+        archi<<"        ¿item Nombre=\""<<aux2->tarea->nombre<<"\"$?"<<endl;
+        archi<<"        ¿item Descripcion=\""<<aux2->tarea->descripcion<<"\"$?"<<endl;
+        archi<<"        ¿item Materia=\""<<aux2->tarea->materia<<"\"$?"<<endl;
+        archi<<"        ¿item Fecha=\""<<aux2->tarea->fecha<<"\"$?"<<endl;
+        archi<<"        ¿item Hora=\""<<aux2->tarea->hora<<"\"$?"<<endl;
+        archi<<"        ¿item Estado=\""<<aux2->tarea->estado<<"\"$?"<<endl;
+        archi<<"    ¿$element?"<<endl;
+        aux2 = aux2->siguiente;
+    }
+    
     archi<<"¿$Elements?";
     cout<<"ARCHIVO DE SALIDA REALIZADO CON EXITO"<<endl;
    
