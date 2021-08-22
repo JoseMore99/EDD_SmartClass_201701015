@@ -36,6 +36,9 @@ ListaD *List_tareas= new ListaD();
 cola<errores*> *Cola_error = new cola<errores*>();
 tareas *cubotarea [5][30][8];
 ListaDC*prueba= new ListaDC();
+int imgtarea = 1;
+int imgestu = 1;
+
 
 int main(){
     
@@ -161,7 +164,7 @@ void CargarTareas(){
 fstream archi;
 string ruta;
 string fila;
-string nombre, materia, descripcion,fecha, hora,estado,id, carnet ;
+string nombre, materia, descripcion,fecha, hora,estado,id, carnet;
 string mes,dia;
 cout<<"INGRESE RUTA DEL ARCHIVO DE TAREAS:"<<endl;
     cin>>ruta;
@@ -189,7 +192,7 @@ cout<<"INGRESE RUTA DEL ARCHIVO DE TAREAS:"<<endl;
         }
         getline(strim,estado,',');
         int carnint = stoi(carnet);
-        if (List_estudiantes->buscar(carnint)){
+        if (List_estudiantes->buscar(carnint)!=true){
             contadorERROR++;
             errores *newerror = new errores(contadorERROR,"Tarea"," No encontrado en la lista de estudiantes el carnet de la fila "+ to_string(contadorTAREA));
             Cola_error->Queue(newerror);
@@ -280,6 +283,10 @@ void manual_usu(){
             cout<<"MODIFICADO!!"<<endl;
         }break;
         case 3:{
+            string dipi;
+            cout<<"Ingresar Dpi:";
+            cin>>dipi;
+            List_estudiantes->eliminar(dipi);
             cout<<"ELIMINADO!!"<<endl;
         }break;
         default:{
@@ -334,6 +341,10 @@ void manual_tare(){
                 cout<<"MODIFICADO!!"<<endl;
                 break;
             case 3:
+                int oci;
+                cout<<"Ingresar pocision:";
+                cin>>oci;
+                List_tareas->eliminar(oci);
                 cout<<"ELIMINADO!!"<<endl;
                 break;
             default:
@@ -494,7 +505,8 @@ void graficar_estudiantes(){
     archi<<"nodo"<<(contadornodo-1)<<"->"<<"nodo0"<<endl;
     archi<<"}";
     archi.close();
-    string cmd = "dot -Tpng Estudiantes.dot -o Estudiantes.png";
+    string cmd = "dot -Tpng Estudiantes.dot -o Estudiantes"+to_string(imgestu)+".png";
+    imgestu++;
     system(cmd.c_str());    
 }
 
@@ -528,7 +540,8 @@ void graficar_tareas(){
     }
     archi<<"}";
     archi.close();
-    string cmd = "dot -Tpng Tareas.dot -o Tareas.png";
+    string cmd = "dot -Tpng Tareas.dot -o Tareas"+to_string(imgtarea)+".png";
+    imgtarea++;
     system(cmd.c_str());    
 }
 
@@ -554,14 +567,21 @@ void codigo_salida(){
         aux = aux->siguiente;
     }while (aux != List_estudiantes->primero);
     NodoTarea *aux2 = List_tareas->primero;
+    string anio,mes,dia, fecha;
+    
     while (aux2 != NULL)
     {
+        fecha = aux2->tarea->fecha;
+        stringstream strim(fecha);
+        getline(strim,anio,'/');
+        getline(strim,mes,'/');
+        getline(strim,dia,'/');
         archi<<"    ¿element type=\"task\"?"<<endl;
         archi<<"        ¿item Carnet=\""<<aux2->tarea->carnet<<"\"$?"<<endl;
         archi<<"        ¿item Nombre=\""<<aux2->tarea->nombre<<"\"$?"<<endl;
         archi<<"        ¿item Descripcion=\""<<aux2->tarea->descripcion<<"\"$?"<<endl;
         archi<<"        ¿item Materia=\""<<aux2->tarea->materia<<"\"$?"<<endl;
-        archi<<"        ¿item Fecha=\""<<aux2->tarea->fecha<<"\"$?"<<endl;
+        archi<<"        ¿item Fecha=\""<<dia<<"/"<<mes<<"/"<<anio<<"\"$?"<<endl;
         archi<<"        ¿item Hora=\""<<aux2->tarea->hora<<"\"$?"<<endl;
         archi<<"        ¿item Estado=\""<<aux2->tarea->estado<<"\"$?"<<endl;
         archi<<"    ¿$element?"<<endl;

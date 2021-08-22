@@ -17,6 +17,7 @@ public:
     ListaDC(/* args */);
     void insertar(estudiante *e);
     bool buscar(int);
+    void eliminar(string);
 };
 
 ListaDC::ListaDC(/* args */)
@@ -45,6 +46,9 @@ void ListaDC::insertar(estudiante *_e){
 
 bool ListaDC::buscar(int carnet){
     Nodo *aux = this->primero;
+    if(aux == NULL){
+        return true;
+    }
     if (aux->estu->carnet==carnet){
         return true;
     }
@@ -59,6 +63,27 @@ bool ListaDC::buscar(int carnet){
    return false;
 }
 
+void ListaDC::eliminar(string dpi){
+    Nodo *aux = this->primero;
+    if(aux->estu->dpi==dpi){
+            this->primero =  this->primero->siguiente;
+            aux->siguiente->anterior = aux->anterior;
+            aux->anterior->siguiente =aux->siguiente;
+            delete(aux);
+            return;
+        }
+        aux = aux->siguiente;
+     while (aux!=this->primero){
+        if (aux->estu->dpi==dpi){
+                aux->siguiente->anterior = aux->anterior;
+                aux->anterior->siguiente =aux->siguiente;
+                delete(aux);
+                return;
+        }
+        aux = aux->siguiente;
+    }
+    cout<<"ESTUDIANTES NO EXISTE"<<endl;
+}
 /*ListaDC::~ListaDC()
 {
 }*/

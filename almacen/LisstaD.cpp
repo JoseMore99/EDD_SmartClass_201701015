@@ -110,6 +110,7 @@ void ListaD::eliminar(int este){
                 aux->siguiente->anterior = aux->anterior;
                 aux->anterior->siguiente =aux->siguiente;
                 delete(aux);
+                return;
             }
         }
         aux = aux->siguiente;

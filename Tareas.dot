@@ -1,0 +1,29 @@
+digraph g {
+graph [
+rankdir = "LR"
+];
+node [
+fontsize = "16"
+shape = "square"
+];
+edge [];
+nodo0[label=" Pocision:197carnet:201901425\nnombre:Tarea de Matematica\ndescripcion:Realizar la tarea del curso de matemática intermedia 1.\nmateria:Matemática Intermedia 1\nfecha:2021/07/01\nestado:Incumplido"];
+nodo1[label=" Pocision:212carnet:202000786\nnombre:Tarea de Fisica\ndescripcion:Realizar la tarea del curso de Fisica 1.\nmateria:Fisica 1\nfecha:2021/07/01\nestado:Pendiente"];
+nodo2[label=" Pocision:655carnet:201901425\nnombre:Tarea de Logica\ndescripcion:Realizar el resumen del curso de Logica.\nmateria:Logica\nfecha:2021/10/04\nestado:Pendiente"];
+nodo3[label=" Pocision:2157carnet:201704186\nnombre:Tarea de Estadistica\ndescripcion:Realizar la tarea del curso de Estadistica 1.\nmateria:Estadistica 1\nfecha:2021/07/14\nestado:Cumplido"];
+nodo4[label=" Pocision:2187carnet:201700886\nnombre:Codificar en C++\ndescripcion:Realizar la tarea del curso de Estructuras de datos\nmateria:Estructuras de Datos\nfecha:2021/07/14\nestado:Pendiente"];
+nodo5[label=" Pocision:3195carnet:201501786\nnombre:Encuesta de Estadistica\ndescripcion:Realizar la encuesta del curso de Estadistica 1.\nmateria:Estadistica 1\nfecha:2021/10/21\nestado:Pendiente"];
+nodo6[label=" Pocision:3225carnet:201700886\nnombre:Proyecto de Lenguajes\ndescripcion:Realizar el proyecto del curso de Lenguajes\nmateria:Lenguajes Formales y de Programacion\nfecha:2021/1/21\nestado:Pendiente"];
+nodo0->nodo1
+nodo1->nodo0
+nodo1->nodo2
+nodo2->nodo1
+nodo2->nodo3
+nodo3->nodo2
+nodo3->nodo4
+nodo4->nodo3
+nodo4->nodo5
+nodo5->nodo4
+nodo5->nodo6
+nodo6->nodo5
+}
