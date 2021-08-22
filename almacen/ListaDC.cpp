@@ -16,6 +16,7 @@ public:
     int tamanio;
     ListaDC(/* args */);
     void insertar(estudiante *e);
+    bool buscar(int);
 };
 
 ListaDC::ListaDC(/* args */)
@@ -41,6 +42,23 @@ void ListaDC::insertar(estudiante *_e){
     }
     
 }
+
+bool ListaDC::buscar(int carnet){
+    Nodo *aux = this->primero;
+    if (aux->estu->carnet==carnet){
+        return true;
+    }
+    aux = aux->siguiente;
+    while (aux!=this->primero)
+    {
+        if (aux->estu->carnet==carnet){
+        return true;
+        }
+        aux = aux->siguiente;
+    }
+   return false;
+}
+
 /*ListaDC::~ListaDC()
 {
 }*/

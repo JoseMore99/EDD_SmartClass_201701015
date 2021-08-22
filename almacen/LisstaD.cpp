@@ -18,6 +18,7 @@ public:
     void insertar(tareas *t);
     void imprimir();
     void buscar(int, int, int);
+    void eliminar(int);
 };
 
 ListaD::ListaD(/* args */)
@@ -67,13 +68,13 @@ void ListaD::buscar(int mes, int dia, int hora){
     while (aux!=NULL)
     {
         if (aux->tarea->pocision==este){
-        cout<<" Carnet=\""<<aux->tarea->carnet<<"\"$?"<<endl;
-        cout<<" Nombre=\""<<aux->tarea->nombre<<"\"$?"<<endl;
-        cout<<" Descripcion=\""<<aux->tarea->descripcion<<"\"$?"<<endl;
-        cout<<" Materia=\""<<aux->tarea->materia<<"\"$?"<<endl;
-        cout<<" Fecha=\""<<aux->tarea->fecha<<"\"$?"<<endl;
-        cout<<" Hora=\""<<aux->tarea->hora<<"\"$?"<<endl;
-        cout<<" Estado=\""<<aux->tarea->estado<<"\"$?"<<endl;
+        cout<<" Carnet=\""<<aux->tarea->carnet<<"\""<<endl;
+        cout<<" Nombre=\""<<aux->tarea->nombre<<"\""<<endl;
+        cout<<" Descripcion=\""<<aux->tarea->descripcion<<"\""<<endl;
+        cout<<" Materia=\""<<aux->tarea->materia<<"\""<<endl;
+        cout<<" Fecha=\""<<aux->tarea->fecha<<"\""<<endl;
+        cout<<" Hora=\""<<aux->tarea->hora<<"\""<<endl;
+        cout<<" Estado=\""<<aux->tarea->estado<<"\""<<endl;
         return ;
         }
         aux = aux->siguiente;
@@ -89,6 +90,33 @@ void ListaD::imprimir(){
             aux = aux->siguiente;
         }
 }
+
+void ListaD::eliminar(int este){
+    NodoTarea *aux = this->primero;
+    while (aux!=NULL)
+    {
+        if (aux->tarea->pocision==este){
+            if(aux == this->primero){
+                this->primero =  this->primero->siguiente;
+                primero->anterior = NULL;
+                delete(aux);
+                return;
+            }else{
+                if (aux->siguiente==NULL){
+                    aux->anterior->siguiente ==NULL;
+                    delete(aux);
+                    return;
+                }
+                aux->siguiente->anterior = aux->anterior;
+                aux->anterior->siguiente =aux->siguiente;
+                delete(aux);
+            }
+        }
+        aux = aux->siguiente;
+    }
+    cout<<"LA TAREA NO EXISTE"<<endl;
+}
+
 /*ListaD::~ListaD()
 {
 }*/

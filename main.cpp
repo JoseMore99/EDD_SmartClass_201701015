@@ -23,6 +23,7 @@ void CargarUsuarios();
 void CargarTareas();
 bool verificar_num(string);
 bool verificar_correo(string);
+bool verificar_fecha(string);
 void graficar_errores();
 void graficar_estudiantes();
 void graficar_tareas();
@@ -181,8 +182,18 @@ cout<<"INGRESE RUTA DEL ARCHIVO DE TAREAS:"<<endl;
         getline(strim,descripcion,',');
         getline(strim,materia,',');
         getline(strim,fecha,',');
+        if (verificar_fecha(fecha)){
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,"Tarea","Estructura mala de la fecha en la linea "+ to_string(contadorTAREA));
+            Cola_error->Queue(newerror);
+        }
         getline(strim,estado,',');
         int carnint = stoi(carnet);
+        if (List_estudiantes->buscar(carnint)){
+            contadorERROR++;
+            errores *newerror = new errores(contadorERROR,"Tarea"," No encontrado en la lista de estudiantes el carnet de la fila "+ to_string(contadorTAREA));
+            Cola_error->Queue(newerror);
+        }
         int mesint = stoi(mes);
         int diaint= stoi (dia);
         int horaint = stoi(hora);
@@ -350,6 +361,14 @@ bool verificar_num(string val){
 
 bool verificar_correo(string val){
     if (regex_match(val, regex("([a-z]+)([_.a-z0-9]*)([a-z0-9]+)(@)([a-z]+)([.a-z]+)([a-z]+)"))){
+        return false;
+    } 
+    cout<<"ERROR C"<<endl;
+    return true;
+}
+
+bool verificar_fecha(string val){
+  if (regex_match(val, regex("([0-9])([0-9])([0-9])([0-9])(/)([0-9])([0-9])(/)([0-9])([0-9])"))){
         return false;
     } 
     cout<<"ERROR C"<<endl;
