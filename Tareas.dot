@@ -7,13 +7,26 @@ fontsize = "16"
 shape = "square"
 ];
 edge [];
-nodo0[label=" Pocision:197carnet:201901425\nnombre:Tarea de Matematica\ndescripcion:Realizar la tarea del curso de matemática intermedia 1.\nmateria:Matemática Intermedia 1\nfecha:2021/07/01\nestado:Incumplido"];
-nodo1[label=" Pocision:212carnet:202000786\nnombre:Tarea de Fisica\ndescripcion:Realizar la tarea del curso de Fisica 1.\nmateria:Fisica 1\nfecha:2021/07/01\nestado:Pendiente"];
-nodo2[label=" Pocision:655carnet:201901425\nnombre:Tarea de Logica\ndescripcion:Realizar el resumen del curso de Logica.\nmateria:Logica\nfecha:2021/10/04\nestado:Pendiente"];
-nodo3[label=" Pocision:2157carnet:201704186\nnombre:Tarea de Estadistica\ndescripcion:Realizar la tarea del curso de Estadistica 1.\nmateria:Estadistica 1\nfecha:2021/07/14\nestado:Cumplido"];
-nodo4[label=" Pocision:2187carnet:201700886\nnombre:Codificar en C++\ndescripcion:Realizar la tarea del curso de Estructuras de datos\nmateria:Estructuras de Datos\nfecha:2021/07/14\nestado:Pendiente"];
-nodo5[label=" Pocision:3195carnet:201501786\nnombre:Encuesta de Estadistica\ndescripcion:Realizar la encuesta del curso de Estadistica 1.\nmateria:Estadistica 1\nfecha:2021/10/21\nestado:Pendiente"];
-nodo6[label=" Pocision:3225carnet:201700886\nnombre:Proyecto de Lenguajes\ndescripcion:Realizar el proyecto del curso de Lenguajes\nmateria:Lenguajes Formales y de Programacion\nfecha:2021/1/21\nestado:Pendiente"];
+nodo0[label=" Pocision:1268carnet:201839076\nnombre:tarea de mate\ndescripcion:realizar la tarea para el primer parcial\nmateria:matematica intermedia 1\nfecha:2021/08/12\nestado:Incumplido"];
+nodo1[label=" Pocision:1362carnet:201839076\nnombre:estudiar para examen\ndescripcion:leer las presentaciones de la 1 a la 5\nmateria:Investigacion de operaciones\nfecha:2021/07/01\nestado:Incumplido"];
+nodo2[label=" Pocision:1368carnet:201656328\nnombre:tarea de mate\ndescripcion:realizar la tarea para el primer parcial\nmateria:matematica intermedia 1\nfecha:2021/08/02\nestado:Incumplido"];
+nodo3[label=" Pocision:1414carnet:201319128\nnombre:investigar edd\ndescripcion:empezar a investigar las estructuras en python\nmateria:Estructuras de datos\nfecha:2021/09/11\nestado:Incumplido"];
+nodo4[label=" Pocision:1422carnet:201120144\nnombre:estudiar para examen\ndescripcion:leer las presentaciones de la 1 a la 5\nmateria:Investigacion de operaciones\nfecha:2021/07/13\nestado:Incumplido"];
+nodo5[label=" Pocision:1452carnet:201839076\nnombre:estudiar para examen\ndescripcion:leer las presentaciones de la 1 a la 5\nmateria:Investigacion de operaciones\nfecha:2021/07/19\nestado:Incumplido"];
+nodo6[label=" Pocision:1487carnet:201839076\nnombre:investigar edd\ndescripcion:empezar a investigar las estructuras en python\nmateria:Estructuras de datos\nfecha:2021/07/26\nestado:Incumplido"];
+nodo7[label=" Pocision:1569carnet:201902339\nnombre:practica edd\ndescripcion:terminar la practica\nmateria:Estructuras de datos\nfecha:2021/09/12\nestado:Incumplido"];
+nodo8[label=" Pocision:1587carnet:201303177\nnombre:investigar edd\ndescripcion:empezar a investigar las estructuras en python\nmateria:Estructuras de datos\nfecha:2021/07/16\nestado:Incumplido"];
+nodo9[label=" Pocision:1733carnet:201319128\nnombre:estudiar para examen\ndescripcion:leer las presentaciones de la 1 a la 5\nmateria:Investigacion de operaciones\nfecha:2021/08/15\nestado:Incumplido"];
+nodo10[label=" Pocision:1827carnet:201902339\nnombre:estudiar para examen\ndescripcion:leer las presentaciones de la 1 a la 5\nmateria:Investigacion de operaciones\nfecha:2021/07/04\nestado:Incumplido"];
+nodo11[label=" Pocision:1838carnet:201399789\nnombre:tarea 2 fisica1\ndescripcion:realizar la tarea para el primer parcial\nmateria:Fisica 2\nfecha:2021/08/06\nestado:Incumplido"];
+nodo12[label=" Pocision:2049carnet:201399789\nnombre:tarea 2 fisica1\ndescripcion:realizar la tarea para el primer parcial\nmateria:Fisica 2\nfecha:2021/09/18\nestado:Incumplido"];
+nodo13[label=" Pocision:2089carnet:201839076\nnombre:investigar edd\ndescripcion:empezar a investigar las estructuras en python\nmateria:Estructuras de datos\nfecha:2021/09/26\nestado:Incumplido"];
+nodo14[label=" Pocision:2093carnet:201839076\nnombre:investigar edd\ndescripcion:empezar a investigar las estructuras en python\nmateria:Estructuras de datos\nfecha:2021/08/27\nestado:Incumplido"];
+nodo15[label=" Pocision:2094carnet:201399789\nnombre:tarea de mate\ndescripcion:realizar la tarea para el primer parcial\nmateria:matematica intermedia 1\nfecha:2021/09/27\nestado:Incumplido"];
+nodo16[label=" Pocision:2198carnet:201659906\nnombre:investigar edd\ndescripcion:empezar a investigar las estructuras en python\nmateria:Estructuras de datos\nfecha:2021/08/18\nestado:Incumplido"];
+nodo17[label=" Pocision:2224carnet:201533703\nnombre:tarea 2 fisica1\ndescripcion:realizar la tarea para el primer parcial\nmateria:Fisica 2\nfecha:2021/09/23\nestado:Incumplido"];
+nodo18[label=" Pocision:2283carnet:201656328\nnombre:tarea de mate\ndescripcion:realizar la tarea para el primer parcial\nmateria:matematica intermedia 1\nfecha:2021/08/05\nestado:Incumplido"];
+nodo19[label=" Pocision:2373carnet:201303177\nnombre:tarea de mate\ndescripcion:realizar la tarea para el primer parcial\nmateria:matematica intermedia 1\nfecha:2021/08/23\nestado:Incumplido"];
 nodo0->nodo1
 nodo1->nodo0
 nodo1->nodo2
@@ -26,4 +39,30 @@ nodo4->nodo5
 nodo5->nodo4
 nodo5->nodo6
 nodo6->nodo5
+nodo6->nodo7
+nodo7->nodo6
+nodo7->nodo8
+nodo8->nodo7
+nodo8->nodo9
+nodo9->nodo8
+nodo9->nodo10
+nodo10->nodo9
+nodo10->nodo11
+nodo11->nodo10
+nodo11->nodo12
+nodo12->nodo11
+nodo12->nodo13
+nodo13->nodo12
+nodo13->nodo14
+nodo14->nodo13
+nodo14->nodo15
+nodo15->nodo14
+nodo15->nodo16
+nodo16->nodo15
+nodo16->nodo17
+nodo17->nodo16
+nodo17->nodo18
+nodo18->nodo17
+nodo18->nodo19
+nodo19->nodo18
 }

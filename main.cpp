@@ -200,7 +200,7 @@ cout<<"INGRESE RUTA DEL ARCHIVO DE TAREAS:"<<endl;
         int mesint = stoi(mes);
         int diaint= stoi (dia);
         int horaint = stoi(hora);
-        int pocision=(diaint*30+horaint)*5+mesint;
+        int pocision=(horaint*30+diaint)*5+mesint;
         tareas *nueva = new tareas(contadorTAREA,carnint,nombre, descripcion,materia,fecha, horaint,estado,pocision);
         cubotarea[mesint-6][diaint][horaint]=nueva;
         //cout<<materia<<"=>";
@@ -371,7 +371,7 @@ bool verificar_num(string val){
 }
 
 bool verificar_correo(string val){
-    if (regex_match(val, regex("([a-z]+)([_.a-z0-9]*)([a-z0-9]+)(@)([a-z]+)([.a-z]+)([a-z]+)"))){
+    if (regex_match(val, regex("([a-zA-Z]+)([_.a-zA-Z0-9]*)([a-zA-Z0-9]+)(@)([a-zA-Z]+)([.a-zA-Z]+)([a-zA-Z]+)"))){
         return false;
     } 
     cout<<"ERROR C"<<endl;
