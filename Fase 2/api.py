@@ -1,5 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request,jsonify
 from flask_cors import CORS
+from Sintac import parser
 
 app= Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -10,10 +11,16 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 def hola():
     return "Pagina principal"
 
-@app.route("/puerto", methods=['GET'])
-def chetget():
-    
-    return ''
+#CARGA MASIMA DE ESTUDIANTES CURSO,Y TAREAS
+@app.route("/carga", methods=['POST'])
+def cargaMasivaEstu():
+    peticion = request.json
+    if peticion['tipo']=="estudiante":
+        f = open(peticion['path'], "r", encoding="utf-8")
+        mensaje = f.read()
+        f.close()
+        parser.parse(mensaje)
+    return 'Carga Masiva de Estudiantes con exito'
 
 @app.route("/puerto", methods=['POST'])
 def chetPost():
@@ -31,4 +38,4 @@ def pagina3():
     return "HOLA "+str(nombre)
 
 if __name__=="__main__":
-    app.run()
+    app.run(debug=True,port=3000)
