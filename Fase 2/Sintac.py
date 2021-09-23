@@ -1,5 +1,6 @@
 from Lex import tokens
 from objetos import estudiante, tarea
+from Almacen.AVL import avl
 # dictionary of names
 names = {}
 
@@ -28,9 +29,25 @@ def p_elemento(t):
     global boolEstu
     global estuAdd
     if boolEstu:
+        estuAdd.carnet = estuAdd.carnet.replace('"','')
+        estuAdd.creditos = estuAdd.creditos.replace('"','')
+        estuAdd.carrera = estuAdd.carrera.replace('"','')
+        estuAdd.correo = estuAdd.correo.replace('"','')
+        estuAdd.nombre = estuAdd.nombre.replace('"','')
+        estuAdd.dpi = estuAdd.dpi.replace('"','')
+        estuAdd.edad = estuAdd.edad.replace('"','')
+        estuAdd.passw = estuAdd.passw.replace('"','')
         Nuevo = estudiante(estuAdd.carnet,estuAdd.creditos,estuAdd.dpi,estuAdd.edad,estuAdd.nombre,estuAdd.carrera,estuAdd.correo,estuAdd.passw)
         LestuYtare.append(Nuevo)
+        avl.insertar(int(estuAdd.carnet),Nuevo)
     if boolTarea:
+        tareADD.carnet = tareADD.carnet.replace('"','')
+        tareADD.nombre = tareADD.nombre.replace('"','')
+        tareADD.desc = tareADD.desc.replace('"','')
+        tareADD.materi = tareADD.materi.replace('"','')
+        tareADD.fecha = tareADD.fecha.replace('"','')
+        tareADD.hora = tareADD.hora.replace('"','')
+        tareADD.estado = tareADD.estado.replace('"','')
         Nuevo = tarea(tareADD.carnet,tareADD.nombre,tareADD.desc,tareADD.materi,tareADD.fecha,tareADD.hora,tareADD.estado)
         LestuYtare.append(Nuevo)
         

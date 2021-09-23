@@ -111,3 +111,4 @@ class AVL:
         self.raiz = raiz.der.raiz
         raiz.der.raiz = self.raiz.izq.raiz
         self.raiz.izq.raiz = raiz
+avl = AVL()

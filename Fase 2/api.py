@@ -1,6 +1,9 @@
 from flask import Flask, request,jsonify
 from flask_cors import CORS
 from Sintac import parser
+import generador 
+import os
+from Almacen.AVL import avl
 
 app= Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -22,8 +25,66 @@ def cargaMasivaEstu():
         parser.parse(mensaje)
     return 'Carga Masiva de Estudiantes con exito'
 
-@app.route("/puerto", methods=['POST'])
-def chetPost():
+@app.route("/reporte", methods=['GET'])
+def reportes():
+    peticion = request.json
+    if peticion['tipo']==0:
+        archi = open("grafAVL.dot","w")
+        archi.write("digraph G{\nnode [shape=circle];\n")
+        generador.grafAVL(avl.raiz,archi)
+        archi.write("\n}")
+        archi.close()
+        os.system('dot -Tsvg grafAVL.dot -o ArbolAVL1.svg')
+        return 'GRAFICA AVL REALIZADA CON EXITO!!'
+    return ''
+
+@app.route("/estudiante", methods=['POST'])
+def estudiantesPost():
+    
+    return ''
+    
+@app.route("/estudiante", methods=['PUT'])
+def estudiantesPut():
+    
+    return ''
+
+@app.route("/estudiante", methods=['DELETE'])
+def estudiantesDelete():
+    
+    return ''
+
+@app.route("/estudiante", methods=['GET'])
+def estudiantesGet():
+    
+    return ''
+
+@app.route("/recordatorio", methods=['POST'])
+def recordatorioPost():
+    
+    return ''
+
+@app.route("/recordatorio", methods=['PUT'])
+def recordatorioPut():
+    
+    return ''
+
+@app.route("/recordatorio", methods=['DELETE'])
+def recordatorioDelete():
+    
+    return ''
+
+@app.route("/recordatorio", methods=['GET'])
+def recordatorioGet():
+    
+    return ''
+
+@app.route("/cursosEstudiante", methods=['POST'])
+def cursosEstudiantePost():
+    
+    return ''
+
+@app.route("/cursosPensum", methods=['POST'])
+def cursosPensumPost():
     
     return ''
 
