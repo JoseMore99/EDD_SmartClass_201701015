@@ -10,6 +10,7 @@ class AVL:
         self.raiz = None
         self.altura = -1
         self.equi = 0
+        self.apunta =None
 
     def insertar(self,id,estu):
         nuevo = NodoA(id,estu)
@@ -111,4 +112,17 @@ class AVL:
         self.raiz = raiz.der.raiz
         raiz.der.raiz = self.raiz.izq.raiz
         self.raiz.izq.raiz = raiz
+
+    def buscador(self, id):
+        self.buscar(self.raiz, id)
+        return self.apunta
+    
+    def buscar (self, raiz, id):
+        if raiz:
+            if raiz.id == id:
+                self.apunta = raiz
+                return
+            self.buscar(raiz.izq.raiz, id)
+            self.buscar(raiz.der.raiz, id)
+
 avl = AVL()

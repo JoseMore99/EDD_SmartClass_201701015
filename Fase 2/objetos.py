@@ -1,6 +1,7 @@
 import Almacen.Matriz_D
 import Almacen.ListaDoble
 import Almacen.ArbolB
+
 class estudiante:
     def __init__(self,carnet="",creditos="",dpi="",edad="",nombre="",carrera="",correo="",passw=""):
         self.carnet = carnet
@@ -12,7 +13,30 @@ class estudiante:
         self.correo = correo
         self.passw = passw
         self.anios = Almacen.ListaDoble.lista_dob()
+    
+    def insertar_anio(self, annio):
+        apunta = self.anios.head
+        while apunta:
+            if apunta.contenido.annio == annio:
+                return
+            apunta = apunta.siguiente
+        amio = anios(annio)
+        self.anios.insertar(amio)
         
+    def insertar_tarea(self, tarea, annio, mes,dia,hora):
+        self.insertar_anio(annio)
+        apunanio= self.anios.head
+        while apunanio:
+            if apunanio.contenido.annio==annio:
+                break
+            apunanio = apunanio.siguiente
+        apunanio.contenido.insertar_mes(mes)
+        apunmes = apunanio.contenido.meses.head
+        while apunmes:
+            if apunmes.contenido.mes==mes:
+                break
+            apunmes = apunmes.siguiente
+        apunmes.contenido.MatDis.insertar_elemento(hora,dia,tarea)
 
     def __str__(self):
         print("Carnet: "+self.carnet)
@@ -29,6 +53,16 @@ class anios:
         self.annio = annio
         self.meses= Almacen.ListaDoble.lista_dob()
         self.semestre = Almacen.ListaDoble.lista_dob()
+    
+    def insertar_mes(self,mes):
+        apunta = self.meses.head
+        while apunta:
+            if apunta.contenido.mes == mes:
+                return
+            apunta = apunta.siguiente
+        mesi = meses(mes)
+        self.meses.insertar(mesi)
+
 
 class meses: 
     def __init__(self, mes):

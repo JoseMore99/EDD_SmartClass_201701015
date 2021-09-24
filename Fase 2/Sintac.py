@@ -1,5 +1,5 @@
 from Lex import tokens
-from objetos import estudiante, tarea
+from objetos import estudiante, tarea,anios
 from Almacen.AVL import avl
 # dictionary of names
 names = {}
@@ -49,6 +49,13 @@ def p_elemento(t):
         tareADD.hora = tareADD.hora.replace('"','')
         tareADD.estado = tareADD.estado.replace('"','')
         Nuevo = tarea(tareADD.carnet,tareADD.nombre,tareADD.desc,tareADD.materi,tareADD.fecha,tareADD.hora,tareADD.estado)
+        datos = tareADD.fecha.split("/")
+        Mes=int(datos[1])
+        anio=int(datos[2])
+        dia=int(datos[0])
+        carne = int(tareADD.carnet)
+        apunta = avl.buscador(carne)
+        apunta.estu.insertar_tarea(Nuevo, anio, Mes,dia,int(tareADD.hora))
         LestuYtare.append(Nuevo)
         
 def p_tipoElemento(t):
