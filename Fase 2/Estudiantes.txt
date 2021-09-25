@@ -139,7 +139,7 @@
         ¿item Nombre="tarea 2 fisica1"$?
         ¿item Descripcion="realizar la tarea para el primer parcial"$?
         ¿item Materia="Fisica 2"$?
-        ¿item Fecha="06/08/2021"$?
+        ¿item Fecha="06/09/2021"$?
         ¿item Hora="12"$?
         ¿item Estado="Incumplido"$?
     ¿$element?

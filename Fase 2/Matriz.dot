@@ -1,0 +1,19 @@
+digraph grid {layout=dot
+labelloc = "t"edge [weight=1000 style=dashed color=dimgrey]
+157711721792[label="Root" fillcolor=brown1 style="filled"]
+157711721810[label="-1,6" fillcolor=darkorchid1 style="filled"]
+157711723126[label="-1,18" fillcolor=darkorchid1 style="filled"]
+157711724111[label="-1,27" fillcolor=darkorchid1 style="filled"]
+157711721807[label="12,-1" fillcolor=darkorchid1 style="filled"]
+157711721804[label="Fisica 2" fillcolor=dodgerblue style="filled"]
+157711723057[label="13,-1" fillcolor=darkorchid1 style="filled"]
+157711723075[label="Fisica 2" fillcolor=dodgerblue style="filled"]
+157711724123[label="matematica intermedia 1" fillcolor=dodgerblue style="filled"]
+157711721792->157711721810->157711723126->157711724111 [arrowhead=vee, arrowtail=vee, dir=both]
+157711721807->157711721804 [arrowhead=vee, arrowtail=vee, dir=both]
+157711723057->157711723075->157711724123 [arrowhead=vee, arrowtail=vee, dir=both]
+rank = same{157711721792->157711721792->157711721807->157711723057 [arrowhead=vee, arrowtail=vee, dir=both]}
+rank = same{157711721810->157711721810->157711721804 [arrowhead=vee, arrowtail=vee, dir=both]}
+rank = same{157711723126->157711723126->157711723075 [arrowhead=vee, arrowtail=vee, dir=both]}
+rank = same{157711724111->157711724111->157711724123 [arrowhead=vee, arrowtail=vee, dir=both]}
+}

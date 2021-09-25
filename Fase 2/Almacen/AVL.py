@@ -119,6 +119,7 @@ class AVL:
     
     def buscar (self, raiz, id):
         if raiz:
+            #print(str(id)+"---"+str(self.id))
             if raiz.id == id:
                 self.apunta = raiz
                 return

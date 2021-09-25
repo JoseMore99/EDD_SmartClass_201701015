@@ -38,7 +38,7 @@ class lista_dob:
     def buscar_delvolv(self, valor):
         nodo= self.head
         while nodo is not None:
-            if str(nodo.contenido)==str(valor):
-                return False
+            if str(nodo.contenido.annio)==str(valor):
+                return nodo
             nodo = nodo.siguiente
-        return True
+        return None

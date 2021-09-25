@@ -1,4 +1,4 @@
-
+import os 
 def grafAVL(raiz,archi):
     if raiz:
         
@@ -12,4 +12,5 @@ def grafAVL(raiz,archi):
 
         grafAVL(raiz.izq.raiz, archi)
         grafAVL(raiz.der.raiz, archi)
+
     
