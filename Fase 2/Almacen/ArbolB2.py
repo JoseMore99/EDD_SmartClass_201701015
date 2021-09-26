@@ -107,51 +107,27 @@ arbolB.insertar(6)
 arbolB.insertar(7)
 arbolB.insertar(8)
 
-#SOLO PARA PRUEBAS
-def imprimir(actual, acumulador):
-    acumulador[0] += 'node{}[label="<r0>'.format(str(acumulador[2]))
 
-    if actual.hijos[0] != None:
-        acumulador[3] += 1 # contador auxiliar
-        acumulador[1] += '"node{}":r0 -> "node{}"\n'.format(str(acumulador[2]) , str(acumulador[3]))
+def graf(raiz):
+    archi = open("ArbolB.dot","w")
+    archi.write("digraph G\n{\nnode[shape = record, height= .1];\n")
+    graficando(raiz,archi)
+    archi.write("}")
+    archi.close()
+    os.system("dot -Tpng  ArbolB.dot -o grafoB.png")
 
-    i = 1
-    while i <= actual.contador:
-        acumulador[0] += '|<c{}> {} |<r{}>'.format(str(i),str(actual.valores[i]),str(i))
+def graficando(raiz,archi):
+    print(raiz.valores)
+    label = "<"+str(hash(raiz.hijos[0]))+">"
+    for i in range(raiz.contador):
+        label+="|"+str(raiz.valores[i+1])+"|"
+        label+="<"+str(hash(raiz.hijos[i+1]))+">"
+    archi.write('"{}"[label="{}"];\n'.format(str(hash(raiz.valores[1])),label))
+    for i in raiz.hijos:
+        if i == None:
+            continue
+        archi.write('{}:{}->{}\n'.format(str(hash(raiz.valores[1])),hash(i),hash(i.valores[1])))
+        graficando(i,archi)
+        
 
-        if actual.hijos[i] != None:
-            acumulador[3] += 1 # contador auxiliar
-            acumulador[1] += '"node{}":r{} -> "node{}"\n'.format(str(acumulador[2]) ,str(i), str(acumulador[3]))
-        i += 1
-    acumulador[0] += '"];\n'
-
-def generarGrafo(raiz):
-    # [ ACUMULADOR, ACUMULADORE DE ENLACES, CONTADOR PAGINA, CONTADOR AUX ]
-    acumulador = ["digraph G\n{\nnode[shape = record, height= .1];\n", "", 0, 0]
-
-    if raiz != None:
-        cola = queue.Queue()
-        cola.put(raiz)
-        while not(cola.empty()): # Mientras la cola no este vacia
-            tmpPagina = cola.get()
-            imprimir(tmpPagina, acumulador)
-            i = 0
-            while i <= tmpPagina.contador:
-                if tmpPagina.hijos[i] != None:
-                    cola.put(tmpPagina.hijos[i])
-                i += 1
-            acumulador[2] += 1 #contador de pagina
-        acumulador[0] += "\n" + acumulador[1]
-
-    acumulador[0] += "}\n"
-
-    f = open('grafo.dot', 'w')
-    try:
-        f.write(acumulador[0])
-    finally:
-        f.close()
-
-    prog = "dot -Tpng  grafo.dot -o grafo.png"
-    os.system(prog)
-
-generarGrafo(arbolB.raiz)
+graf(arbolB.raiz)
