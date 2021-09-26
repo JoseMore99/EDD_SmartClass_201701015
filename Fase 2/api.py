@@ -4,11 +4,12 @@ from Sintac import parser
 import generador 
 import os
 from Almacen.AVL import avl
+from Almacen.ArbolB import ArbolB
 
 app= Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-
+Pensum = ArbolB()
 
 @app.route("/")
 def hola():
@@ -19,6 +20,19 @@ def hola():
 def cargaMasivaEstu():
     peticion = request.json
     if peticion['tipo']=="estudiante":
+        f = open(peticion['path'], "r", encoding="utf-8")
+        mensaje = f.read()
+        f.close()
+        parser.parse(mensaje)
+    elif peticion['tipo']=="recordatorio":
+        try:
+            f = open(peticion['path'], "r", encoding="utf-8")
+            mensaje = f.read()
+            f.close()
+            parser.parse(mensaje)
+        except: 
+            print("ya cargo")
+    elif peticion['tipo']=="curso":
         f = open(peticion['path'], "r", encoding="utf-8")
         mensaje = f.read()
         f.close()
