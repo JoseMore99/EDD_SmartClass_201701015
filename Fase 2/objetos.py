@@ -1,6 +1,6 @@
 import Almacen.Matriz_D
 import Almacen.ListaDoble
-import Almacen.ArbolB
+import Almacen.ArbolB2
 import os
 
 class estudiante:
@@ -153,7 +153,7 @@ class tarea:
         return "-------------------"
 
 class curso:
-    def __init__(self, nombre, codigo, creditos, obligatorio,prerrequisito) -> None:
+    def __init__(self, nombre, codigo, creditos, obligatorio,prerrequisito):
         self.nombre = nombre
         self.codigo = codigo
         self.creditos = creditos

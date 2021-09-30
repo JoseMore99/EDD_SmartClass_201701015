@@ -4,12 +4,13 @@ from Sintac import parser
 import generador 
 import os
 from Almacen.AVL import avl
-from Almacen.ArbolB import ArbolB
+from Almacen.ArbolB2 import Arbol_B
+from objetos import curso
 
 app= Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-Pensum = ArbolB()
+Pensum = Arbol_B(5)
 
 @app.route("/")
 def hola():
@@ -32,11 +33,7 @@ def cargaMasivaEstu():
             parser.parse(mensaje)
         except: 
             print("ya cargo")
-    elif peticion['tipo']=="curso":
-        f = open(peticion['path'], "r", encoding="utf-8")
-        mensaje = f.read()
-        f.close()
-        parser.parse(mensaje)
+        return 'Carga Masiva de Tareas con exito'
     return 'Carga Masiva de Estudiantes con exito'
 
 @app.route("/reporte", methods=['GET'])
@@ -57,6 +54,8 @@ def reportes():
         puntero = avl.buscador(peticion['carnet'])
         puntero.estu.graftarea(peticion['año'],peticion['mes'])
         return 'GRAFICA MATRIZ DE TAREAS REALIZADA CON EXITO!!'
+    elif peticion['tipo']==3:
+        generador.grafB(Pensum.raiz)
     return ''
 
 @app.route("/estudiante", methods=['POST'])
@@ -96,7 +95,7 @@ def recordatorioDelete():
 
 @app.route("/recordatorio", methods=['GET'])
 def recordatorioGet():
-    
+
     return ''
 
 @app.route("/cursosEstudiante", methods=['POST'])
@@ -106,8 +105,17 @@ def cursosEstudiantePost():
 
 @app.route("/cursosPensum", methods=['POST'])
 def cursosPensumPost():
-    
-    return ''
+    peticion = request.json
+    for i in peticion['Cursos']:
+        codigo = int(i["Codigo"])
+        nombre = i["Nombre"]
+        creditos=i["Creditos"]
+        prerre=i["Prerequisitos"]
+        obliga=i["Obligatorio"]
+        nuevo  = curso(nombre,codigo,creditos,obliga,prerre)
+        Pensum.insertar(nuevo)
+        #Pensum.insertar(int(i["Codigo"]))
+    return 'Carga de cursos en Pensum completa'
 
 #URLS DE PRUEBAS UNICAMENTE 
 @app.route("/pagina2")

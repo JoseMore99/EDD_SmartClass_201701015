@@ -1,6 +1,5 @@
 import copy
 import os
-import queue
 class hoja:
     def __init__(self, orden):
         self.contador = 0 # CONTADOR DE NUMERO DE CLAVES QUE SE POSEE
@@ -55,17 +54,30 @@ class Arbol_B:
 
     def buscarHoja(self,puntero, valor, camino):
         encontrado = False
-        if valor < puntero.valores[1] :
-            camino[0] = 0   
-            encontrado = False
-        else: 
-            camino[0] = puntero.contador #REVISAR LUEGO!!!!!!!
-            if puntero.valores[camino[0]] is None:
-                camino[0]-=1
-            while (valor < puntero.valores[camino[0]]) and (camino[0] > 1):
-                camino[0] = camino[0] - 1
-            encontrado = valor == puntero.valores[camino[0]]
-        return encontrado
+        try:
+            if valor.codigo < puntero.valores[1].codigo :
+                camino[0] = 0   
+                encontrado = False
+            else: 
+                camino[0] = puntero.contador #REVISAR LUEGO!!!!!!!
+                if puntero.valores[camino[0]] is None:
+                    camino[0]-=1
+                while (valor.codigo < puntero.valores[camino[0]].codigo) and (camino[0] > 1):
+                    camino[0] = camino[0] - 1
+                encontrado = valor.codigo == puntero.valores[camino[0]].codigo
+            return encontrado
+        except:
+            if valor.codigo < puntero.valores[1] :
+                camino[0] = 0   
+                encontrado = False
+            else: 
+                camino[0] = puntero.contador #REVISAR LUEGO!!!!!!!
+                if puntero.valores[camino[0]] is None:
+                    camino[0]-=1
+                while (valor.codigo < puntero.valores[camino[0]]) and (camino[0] > 1):
+                    camino[0] = camino[0] - 1
+                encontrado = valor.codigo == puntero.valores[camino[0]]
+            return encontrado
 
     def AñadirHoja(self ,PunteroHoja,Mediana,Nodonew,camino):
         i = PunteroHoja.contador
@@ -97,37 +109,18 @@ class Arbol_B:
         PunteroHoja.contador = PunteroHoja.contador -1
         
 
-arbolB = Arbol_B(5)
-arbolB.insertar(1)
-arbolB.insertar(2)
-arbolB.insertar(3)
-arbolB.insertar(4)
-arbolB.insertar(5)
-arbolB.insertar(6)
-arbolB.insertar(7)
-arbolB.insertar(8)
+#arbolB = Arbol_B(5)
+#arbolB.insertar(1)
+#arbolB.insertar(2)
+#arbolB.insertar(3)
+#arbolB.insertar(4)
+#arbolB.insertar(5)
+#arbolB.insertar(6)
+#arbolB.insertar(7)
+#arbolB.insertar(8)
 
 
-def graf(raiz):
-    archi = open("ArbolB.dot","w")
-    archi.write("digraph G\n{\nnode[shape = record, height= .1];\n")
-    graficando(raiz,archi)
-    archi.write("}")
-    archi.close()
-    os.system("dot -Tpng  ArbolB.dot -o grafoB.png")
 
-def graficando(raiz,archi):
-    print(raiz.valores)
-    label = "<"+str(hash(raiz.hijos[0]))+">"
-    for i in range(raiz.contador):
-        label+="|"+str(raiz.valores[i+1])+"|"
-        label+="<"+str(hash(raiz.hijos[i+1]))+">"
-    archi.write('"{}"[label="{}"];\n'.format(str(hash(raiz.valores[1])),label))
-    for i in raiz.hijos:
-        if i == None:
-            continue
-        archi.write('{}:{}->{}\n'.format(str(hash(raiz.valores[1])),hash(i),hash(i.valores[1])))
-        graficando(i,archi)
         
 
-graf(arbolB.raiz)
+#graf(arbolB.raiz)
