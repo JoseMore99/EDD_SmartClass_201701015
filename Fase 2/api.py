@@ -48,10 +48,8 @@ def reportes():
         os.system('dot -Tsvg grafAVL.dot -o ArbolAVL1.svg')
         return 'GRAFICA AVL REALIZADA CON EXITO!!'
     elif peticion['tipo']==1:
-        print(peticion['carnet'])
-        print(peticion['año'])
-        print(peticion['mes'])
-        puntero = avl.buscador(peticion['carnet'])
+        puntero = avl.buscador(int(peticion['carnet']))
+        print(puntero.estu.carnet)
         puntero.estu.graftarea(peticion['año'],peticion['mes'])
         return 'GRAFICA MATRIZ DE TAREAS REALIZADA CON EXITO!!'
     elif peticion['tipo']==3:

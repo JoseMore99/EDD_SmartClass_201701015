@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'DOLAR EQUALS ID LQUESTION NORMSTRING NUMBER RQUESTION TCARNET TCARRERA TCREDITOS TDESCRIPCION TDPI TEDAD TELEMENT TELEMENTS TESTADO TFECHA THORA TITEM TMATERIA TNOMBRE TPASSWORD TTYPEstatement : LQUESTION TELEMENTS RQUESTION elementos LQUESTION DOLAR TELEMENTS RQUESTIONelementos : elementos elemento\n                 | elemento\n    elemento : LQUESTION TELEMENT  tipoElemento RQUESTION items LQUESTION DOLAR TELEMENT RQUESTIONtipoElemento : TTYPE EQUALS NORMSTRING\n    items : items item\n             | item\n    item : LQUESTION TITEM tipeItem EQUALS valueItem DOLAR RQUESTION\n    valueItem : NORMSTRING\n                 | NUMBER\n                 tipeItem : TCARNET\n                | TDPI\n                | TNOMBRE\n                | TCARRERA\n                | TPASSWORD\n                | TCREDITOS\n                | TEDAD\n                | TDESCRIPCION\n                | TMATERIA\n                | TFECHA\n                | THORA\n                | TESTADO\n                '
+_lr_signature = 'DOLAR EQUALS ID LQUESTION NORMSTRING NUMBER RQUESTION TCARNET TCARRERA TCORREO TCREDITOS TDESCRIPCION TDPI TEDAD TELEMENT TELEMENTS TESTADO TFECHA THORA TITEM TMATERIA TNOMBRE TPASSWORD TTYPEstatement : LQUESTION TELEMENTS RQUESTION elementos LQUESTION DOLAR TELEMENTS RQUESTIONelementos : elementos elemento\n                 | elemento\n    elemento : LQUESTION TELEMENT  tipoElemento RQUESTION items LQUESTION DOLAR TELEMENT RQUESTIONtipoElemento : TTYPE EQUALS NORMSTRING\n    items : items item\n             | item\n    item : LQUESTION TITEM tipeItem EQUALS valueItem DOLAR RQUESTION\n    valueItem : NORMSTRING\n                 | NUMBER\n                 tipeItem : TCARNET\n                | TDPI\n                | TNOMBRE\n                | TCARRERA\n                | TPASSWORD\n                | TCREDITOS\n                | TCORREO\n                | TEDAD\n                | TDESCRIPCION\n                | TMATERIA\n                | TFECHA\n                | THORA\n                | TESTADO\n                '
     
-_lr_action_items = {'LQUESTION':([0,4,6,7,10,14,18,19,24,44,46,],[2,5,9,-3,-2,17,23,-7,-6,-4,-8,]),'$end':([1,21,],[0,-1,]),'TELEMENTS':([2,13,],[3,16,]),'RQUESTION':([3,11,16,20,40,45,],[4,14,21,-5,44,46,]),'TELEMENT':([5,9,38,],[8,8,40,]),'TTYPE':([8,],[12,]),'DOLAR':([9,23,41,42,43,],[13,38,45,-9,-10,]),'EQUALS':([12,25,26,27,28,29,30,31,32,33,34,35,36,37,],[15,39,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,]),'NORMSTRING':([15,39,],[20,42,]),'TITEM':([17,23,],[22,22,]),'TCARNET':([22,],[26,]),'TDPI':([22,],[27,]),'TNOMBRE':([22,],[28,]),'TCARRERA':([22,],[29,]),'TPASSWORD':([22,],[30,]),'TCREDITOS':([22,],[31,]),'TEDAD':([22,],[32,]),'TDESCRIPCION':([22,],[33,]),'TMATERIA':([22,],[34,]),'TFECHA':([22,],[35,]),'THORA':([22,],[36,]),'TESTADO':([22,],[37,]),'NUMBER':([39,],[43,]),}
+_lr_action_items = {'LQUESTION':([0,4,6,7,10,14,18,19,24,45,47,],[2,5,9,-3,-2,17,23,-7,-6,-4,-8,]),'$end':([1,21,],[0,-1,]),'TELEMENTS':([2,13,],[3,16,]),'RQUESTION':([3,11,16,20,41,46,],[4,14,21,-5,45,47,]),'TELEMENT':([5,9,39,],[8,8,41,]),'TTYPE':([8,],[12,]),'DOLAR':([9,23,42,43,44,],[13,39,46,-9,-10,]),'EQUALS':([12,25,26,27,28,29,30,31,32,33,34,35,36,37,38,],[15,40,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,]),'NORMSTRING':([15,40,],[20,43,]),'TITEM':([17,23,],[22,22,]),'TCARNET':([22,],[26,]),'TDPI':([22,],[27,]),'TNOMBRE':([22,],[28,]),'TCARRERA':([22,],[29,]),'TPASSWORD':([22,],[30,]),'TCREDITOS':([22,],[31,]),'TCORREO':([22,],[32,]),'TEDAD':([22,],[33,]),'TDESCRIPCION':([22,],[34,]),'TMATERIA':([22,],[35,]),'TFECHA':([22,],[36,]),'THORA':([22,],[37,]),'TESTADO':([22,],[38,]),'NUMBER':([40,],[44,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'elementos':([4,],[6,]),'elemento':([4,6,],[7,10,]),'tipoElemento':([8,],[11,]),'items':([14,],[18,]),'item':([14,18,],[19,24,]),'tipeItem':([22,],[25,]),'valueItem':([39,],[41,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'elementos':([4,],[6,]),'elemento':([4,6,],[7,10,]),'tipoElemento':([8,],[11,]),'items':([14,],[18,]),'item':([14,18,],[19,24,]),'tipeItem':([22,],[25,]),'valueItem':([40,],[42,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,26 +27,27 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> LQUESTION TELEMENTS RQUESTION elementos LQUESTION DOLAR TELEMENTS RQUESTION','statement',8,'p_statement_group','Sintac.py',7),
-  ('elementos -> elementos elemento','elementos',2,'p_elementos_group','Sintac.py',12),
-  ('elementos -> elemento','elementos',1,'p_elementos_group','Sintac.py',13),
-  ('elemento -> LQUESTION TELEMENT tipoElemento RQUESTION items LQUESTION DOLAR TELEMENT RQUESTION','elemento',9,'p_elemento','Sintac.py',17),
-  ('tipoElemento -> TTYPE EQUALS NORMSTRING','tipoElemento',3,'p_tipoElemento','Sintac.py',20),
-  ('items -> items item','items',2,'p_items','Sintac.py',24),
-  ('items -> item','items',1,'p_items','Sintac.py',25),
-  ('item -> LQUESTION TITEM tipeItem EQUALS valueItem DOLAR RQUESTION','item',7,'p_item','Sintac.py',29),
-  ('valueItem -> NORMSTRING','valueItem',1,'p_valueItem','Sintac.py',35),
-  ('valueItem -> NUMBER','valueItem',1,'p_valueItem','Sintac.py',36),
-  ('tipeItem -> TCARNET','tipeItem',1,'p_tipeItem','Sintac.py',39),
-  ('tipeItem -> TDPI','tipeItem',1,'p_tipeItem','Sintac.py',40),
-  ('tipeItem -> TNOMBRE','tipeItem',1,'p_tipeItem','Sintac.py',41),
-  ('tipeItem -> TCARRERA','tipeItem',1,'p_tipeItem','Sintac.py',42),
-  ('tipeItem -> TPASSWORD','tipeItem',1,'p_tipeItem','Sintac.py',43),
-  ('tipeItem -> TCREDITOS','tipeItem',1,'p_tipeItem','Sintac.py',44),
-  ('tipeItem -> TEDAD','tipeItem',1,'p_tipeItem','Sintac.py',45),
-  ('tipeItem -> TDESCRIPCION','tipeItem',1,'p_tipeItem','Sintac.py',46),
-  ('tipeItem -> TMATERIA','tipeItem',1,'p_tipeItem','Sintac.py',47),
-  ('tipeItem -> TFECHA','tipeItem',1,'p_tipeItem','Sintac.py',48),
-  ('tipeItem -> THORA','tipeItem',1,'p_tipeItem','Sintac.py',49),
-  ('tipeItem -> TESTADO','tipeItem',1,'p_tipeItem','Sintac.py',50),
+  ('statement -> LQUESTION TELEMENTS RQUESTION elementos LQUESTION DOLAR TELEMENTS RQUESTION','statement',8,'p_statement_group','Sintac.py',14),
+  ('elementos -> elementos elemento','elementos',2,'p_elementos_group','Sintac.py',22),
+  ('elementos -> elemento','elementos',1,'p_elementos_group','Sintac.py',23),
+  ('elemento -> LQUESTION TELEMENT tipoElemento RQUESTION items LQUESTION DOLAR TELEMENT RQUESTION','elemento',9,'p_elemento','Sintac.py',27),
+  ('tipoElemento -> TTYPE EQUALS NORMSTRING','tipoElemento',3,'p_tipoElemento','Sintac.py',62),
+  ('items -> items item','items',2,'p_items','Sintac.py',76),
+  ('items -> item','items',1,'p_items','Sintac.py',77),
+  ('item -> LQUESTION TITEM tipeItem EQUALS valueItem DOLAR RQUESTION','item',7,'p_item','Sintac.py',83),
+  ('valueItem -> NORMSTRING','valueItem',1,'p_valueItem','Sintac.py',87),
+  ('valueItem -> NUMBER','valueItem',1,'p_valueItem','Sintac.py',88),
+  ('tipeItem -> TCARNET','tipeItem',1,'p_tipeItem','Sintac.py',121),
+  ('tipeItem -> TDPI','tipeItem',1,'p_tipeItem','Sintac.py',122),
+  ('tipeItem -> TNOMBRE','tipeItem',1,'p_tipeItem','Sintac.py',123),
+  ('tipeItem -> TCARRERA','tipeItem',1,'p_tipeItem','Sintac.py',124),
+  ('tipeItem -> TPASSWORD','tipeItem',1,'p_tipeItem','Sintac.py',125),
+  ('tipeItem -> TCREDITOS','tipeItem',1,'p_tipeItem','Sintac.py',126),
+  ('tipeItem -> TCORREO','tipeItem',1,'p_tipeItem','Sintac.py',127),
+  ('tipeItem -> TEDAD','tipeItem',1,'p_tipeItem','Sintac.py',128),
+  ('tipeItem -> TDESCRIPCION','tipeItem',1,'p_tipeItem','Sintac.py',129),
+  ('tipeItem -> TMATERIA','tipeItem',1,'p_tipeItem','Sintac.py',130),
+  ('tipeItem -> TFECHA','tipeItem',1,'p_tipeItem','Sintac.py',131),
+  ('tipeItem -> THORA','tipeItem',1,'p_tipeItem','Sintac.py',132),
+  ('tipeItem -> TESTADO','tipeItem',1,'p_tipeItem','Sintac.py',133),
 ]

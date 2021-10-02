@@ -13,6 +13,7 @@ class NodoMatriz():
 class Matriz():
     def __init__(self):
         self.root = NodoMatriz(-1,-1, "Root")
+        self.size=0
 
     #BUSCA EL NODO CABECERA EN Y
     def buscar_fila(self, y):
@@ -106,6 +107,7 @@ class Matriz():
 
     # INSERCION GENERAL
     def insertar_elemento(self, x, y, dato):
+        self.size+=1
         nuevo = NodoMatriz(x,y,dato)
         NodoColumna = self.buscar_columna(x)
         NodoFila = self.buscar_fila(y)

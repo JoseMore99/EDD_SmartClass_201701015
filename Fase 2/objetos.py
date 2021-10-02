@@ -38,13 +38,25 @@ class estudiante:
                 break
             apunmes = apunmes.siguiente
         apunmes.contenido.MatDis.insertar_elemento(hora,dia,tarea)
+        print(str(apunmes.contenido.MatDis.size)+"++"+str(mes))
+
+    def insertarCurso(self, curso,semestre, annio):
+        self.insertar_anio(annio)
+        apunanio= self.anios.head
+        while apunanio:
+            if apunanio.contenido.annio==annio:
+                break
+            apunanio = apunanio.siguiente
+        if semestre ==1:
+            pass
+        elif semestre==2:
+            pass
 
     def graftarea(self,annio,mes):
         apunta = self.anios.head
 
         while apunta:
             if int(apunta.contenido.annio) == int(annio):
-                print("entro")
                 apunta.contenido.grafmes(mes)
             apunta = apunta.siguiente
 
@@ -63,7 +75,10 @@ class anios:
         self.annio = annio
         self.meses= Almacen.ListaDoble.lista_dob()
         self.semestre = Almacen.ListaDoble.lista_dob()
-    
+
+        self.semestre.insertar(1)
+        self.semestre.insertar(2)    
+        
     def insertar_mes(self,mes):
         apunta = self.meses.head
         while apunta:
@@ -80,12 +95,20 @@ class anios:
                 apunta.contenido.graficar_tarea()
             apunta = apunta.siguiente
 
+    def insertar_en_semestre1(self):
+        aux = self.semestre.head
+
+    def insertar_en_semestre2(self):
+        aux = self.semestre.head.siguiente
+        
 class meses: 
     def __init__(self, mes):
         self.mes = mes
         self.MatDis = Almacen.Matriz_D.Matriz()
     
     def graficar_tarea(self):
+        print("contador Tareas:"+str(self.MatDis.size))
+        print("mes:"+str(self.mes))
         Archi = open("Matriz.dot","w")
         Archi.write('digraph grid {')
         Archi.write('layout=dot\nlabelloc = "t"')
@@ -95,7 +118,8 @@ class meses:
             col = temp
             while col is not None:
                 try:
-                    Archi.write('{}[label="{}" fillcolor=dodgerblue style="filled"]\n'.format(str(hash(col)),col.dato.materi))
+                    conteindo = col.dato.materi+"\\n"+col.dato.nombre
+                    Archi.write('{}[label="{}" fillcolor=dodgerblue style="filled"]\n'.format(str(hash(col)),conteindo))
                 except:
                     valorxy= str(col.x)+","+str(col.y)
                     if valorxy=="-1,-1":
@@ -130,7 +154,7 @@ class meses:
 class semestre:
     def __init__(self, numero) -> None:
         self.numero = numero
-        self.abb = Almacen.ArbolB.ArbolB()
+        self.abb = Almacen.ArbolB2(5)
 
 class tarea:
     def __init__(self,carnet="",nombre="",desc="",materi="",fecha="",hora="",estado=""):

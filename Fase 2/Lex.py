@@ -9,6 +9,7 @@ reserved = {
     'Carrera' : 'TCARRERA',
     'Password' : 'TPASSWORD',
     'Creditos' : 'TCREDITOS',
+    'Correo' : 'TCORREO',
     'Edad' : 'TEDAD',
     'Descripcion' : 'TDESCRIPCION',
     'Materia' : 'TMATERIA',

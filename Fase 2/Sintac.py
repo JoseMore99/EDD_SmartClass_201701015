@@ -14,7 +14,8 @@ def p_statement_group(t):
     'statement : LQUESTION TELEMENTS RQUESTION elementos LQUESTION DOLAR TELEMENTS RQUESTION'
     for i in LestuYtare:
         try:
-            print(i)
+            #print(i)
+            pass
         except:
             print("papitas")
             
@@ -30,12 +31,15 @@ def p_elemento(t):
     global estuAdd
     if boolEstu:
         estuAdd.carnet = estuAdd.carnet.replace('"','')
-        estuAdd.creditos = estuAdd.creditos.replace('"','')
         estuAdd.carrera = estuAdd.carrera.replace('"','')
         estuAdd.correo = estuAdd.correo.replace('"','')
         estuAdd.nombre = estuAdd.nombre.replace('"','')
         estuAdd.dpi = estuAdd.dpi.replace('"','')
-        estuAdd.edad = estuAdd.edad.replace('"','')
+        try:
+            estuAdd.edad = estuAdd.edad.replace('"','')
+            estuAdd.creditos = estuAdd.creditos.replace('"','')
+        except:
+            pass
         estuAdd.passw = estuAdd.passw.replace('"','')
         Nuevo = estudiante(estuAdd.carnet,estuAdd.creditos,estuAdd.dpi,estuAdd.edad,estuAdd.nombre,estuAdd.carrera,estuAdd.correo,estuAdd.passw)
         LestuYtare.append(Nuevo)
@@ -47,6 +51,7 @@ def p_elemento(t):
         tareADD.materi = tareADD.materi.replace('"','')
         tareADD.fecha = tareADD.fecha.replace('"','')
         tareADD.hora = tareADD.hora.replace('"','')
+        splitHora = tareADD.hora.split(':')
         tareADD.estado = tareADD.estado.replace('"','')
         Nuevo = tarea(tareADD.carnet,tareADD.nombre,tareADD.desc,tareADD.materi,tareADD.fecha,tareADD.hora,tareADD.estado)
         datos = tareADD.fecha.split("/")
@@ -55,7 +60,8 @@ def p_elemento(t):
         dia=int(datos[0])
         carne = int(tareADD.carnet)
         apunta = avl.buscador(carne)
-        apunta.estu.insertar_tarea(Nuevo, anio, Mes,dia,int(tareADD.hora))
+        print(apunta.estu.carnet)
+        apunta.estu.insertar_tarea(Nuevo, anio, Mes,dia,int(splitHora[0]))
         LestuYtare.append(Nuevo)
         
 def p_tipoElemento(t):
@@ -124,6 +130,7 @@ def p_tipeItem(t):
                 | TCARRERA
                 | TPASSWORD
                 | TCREDITOS
+                | TCORREO
                 | TEDAD
                 | TDESCRIPCION
                 | TMATERIA
