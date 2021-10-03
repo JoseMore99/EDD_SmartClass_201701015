@@ -20,7 +20,7 @@ def grafB(raiz):
     graficandoB(raiz,archi)
     archi.write("}")
     archi.close()
-    os.system("dot -Tpng  ArbolB.dot -o grafoB.png")
+    os.system("dot -Tsvg  ArbolB.dot -o grafoB.svg")
 
 def graficandoB(raiz,archi):
     print(raiz.valores)

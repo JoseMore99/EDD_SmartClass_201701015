@@ -47,10 +47,10 @@ class estudiante:
             if apunanio.contenido.annio==annio:
                 break
             apunanio = apunanio.siguiente
-        if semestre ==1:
-            pass
-        elif semestre==2:
-            pass
+        if semestre ==1 or semestre =="1":
+            apunanio.contenido.insertar_en_semestre1(curso)
+        elif semestre==2 or semestre =="2":
+            apunanio.contenido.insertar_en_semestre2(curso)
 
     def graftarea(self,annio,mes):
         apunta = self.anios.head
@@ -58,6 +58,13 @@ class estudiante:
         while apunta:
             if int(apunta.contenido.annio) == int(annio):
                 apunta.contenido.grafmes(mes)
+            apunta = apunta.siguiente
+    
+    def devolv_anio(self,annio):
+        apunta = self.anios.head
+        while apunta:
+            if apunta.contenido.annio == annio:
+                return apunta.contenido
             apunta = apunta.siguiente
 
     def __str__(self):
@@ -76,8 +83,11 @@ class anios:
         self.meses= Almacen.ListaDoble.lista_dob()
         self.semestre = Almacen.ListaDoble.lista_dob()
 
-        self.semestre.insertar(1)
-        self.semestre.insertar(2)    
+        s1= semestre(1)
+        s2= semestre(2)
+
+        self.semestre.insertar(s1)
+        self.semestre.insertar(s2)    
         
     def insertar_mes(self,mes):
         apunta = self.meses.head
@@ -95,11 +105,14 @@ class anios:
                 apunta.contenido.graficar_tarea()
             apunta = apunta.siguiente
 
-    def insertar_en_semestre1(self):
+    def insertar_en_semestre1(self,curso):
         aux = self.semestre.head
+        aux.contenido.abb.insertar(curso)
 
-    def insertar_en_semestre2(self):
+    def insertar_en_semestre2(self,curso):
         aux = self.semestre.head.siguiente
+        aux.contenido.abb.insertar(curso)
+
         
 class meses: 
     def __init__(self, mes):
@@ -149,12 +162,12 @@ class meses:
             temp = temp.abajo
         Archi.write('}')
         Archi.close()
-        os.system('dot -Tpng Matriz.dot -o MatrizG.png')
+        os.system('dot -Tsvg Matriz.dot -o MatrizG.svg')
 
 class semestre:
-    def __init__(self, numero) -> None:
+    def __init__(self, numero):
         self.numero = numero
-        self.abb = Almacen.ArbolB2(5)
+        self.abb = Almacen.ArbolB2.Arbol_B(5)
 
 class tarea:
     def __init__(self,carnet="",nombre="",desc="",materi="",fecha="",hora="",estado=""):

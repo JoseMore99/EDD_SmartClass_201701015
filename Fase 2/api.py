@@ -54,6 +54,20 @@ def reportes():
         return 'GRAFICA MATRIZ DE TAREAS REALIZADA CON EXITO!!'
     elif peticion['tipo']==3:
         generador.grafB(Pensum.raiz)
+        return 'GRAFICA ARBOL B DE PENSUM REALIZADA CON EXITO!!'
+    elif peticion['tipo']==4:
+        carne = peticion["carnet"]
+        annio = peticion["año"]
+        semestre = peticion["semestre"]
+        apunta = avl.buscador(carne)
+        apuntaAnio= apunta.estu.devolv_anio(annio)
+        if semestre == '"1"'or semestre == '"2"':
+            semestre = semestre.replace('"','')
+        if int(semestre) ==1:
+            generador.grafB(apuntaAnio.semestre.head.contenido.abb.raiz)
+        elif int(semestre) ==2:
+            generador.grafB(apuntaAnio.semestre.head.siguiente.contenido.abb.raiz)
+        return 'GRAFICA ARBOL B DE CURSOS REALIZADA CON EXITO!!'
     return ''
 
 @app.route("/estudiante", methods=['POST'])
@@ -98,8 +112,24 @@ def recordatorioGet():
 
 @app.route("/cursosEstudiante", methods=['POST'])
 def cursosEstudiantePost():
-    
-    return ''
+    peticion=request.json
+    for i in peticion["Estudiantes"]:
+        carnet = i["Carnet"]
+        apunta = avl.buscador(carnet)
+        for j in i["Años"] :
+            annio = j["Año"]
+            for k in j["Semestres"]:
+                semestre = k["Semestre"]
+                for l in k['Cursos']:
+                    codigo = int(l["Codigo"])
+                    nombre = l["Nombre"]
+                    creditos=l["Creditos"]
+                    prerre=l["Prerequisitos"]
+                    obliga=l["Obligatorio"]
+                    nuevo  = curso(nombre,codigo,creditos,obliga,prerre)
+                    apunta.estu.insertarCurso(nuevo,semestre, annio)
+                    
+    return 'Cargra de cursos de estudiantes exitosa'
 
 @app.route("/cursosPensum", methods=['POST'])
 def cursosPensumPost():
