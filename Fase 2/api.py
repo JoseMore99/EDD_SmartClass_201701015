@@ -87,8 +87,19 @@ def estudiantesPost():
     
 @app.route("/estudiante", methods=['PUT'])
 def estudiantesPut():
-    
-    return ''
+    peticio = request.json
+    carnet = peticio['carnet']
+    carrera = peticio['carrera']
+    correo = peticio['correo']
+    nombre = peticio['nombre']
+    dpi = peticio['DPI']
+    edad = peticio['edad']
+    creditos = peticio['creditos']
+    passw = peticio['password']
+    Nuevo = estudiante(carnet,creditos,dpi,edad,nombre,carrera,correo,passw)
+    avl.eliminar(int(carnet))
+    avl.insertar(int(carnet),Nuevo)
+    return 'ESTUDIANTE MODIFICADO'
 
 @app.route("/estudiante", methods=['DELETE'])
 def estudiantesDelete():
@@ -99,8 +110,20 @@ def estudiantesDelete():
 
 @app.route("/estudiante", methods=['GET'])
 def estudiantesGet():
-    
-    return ''
+    i = request.json
+    carnet = i["carnet"]
+    apunta = avl.buscador(int(carnet))
+    print(apunta.estu.carnet)
+    datos ={
+        'Carnet': apunta.estu.carnet,
+        'Nombre': apunta.estu.nombre,
+        'Creditos': apunta.estu.creditos,
+        'DPI': apunta.estu.dpi,
+        'edad': apunta.estu.edad,
+        'Correo': apunta.estu.correo,
+        'password':  apunta.estu.passw,
+    }
+    return datos
 
 @app.route("/recordatorio", methods=['POST'])
 def recordatorioPost():

@@ -108,6 +108,8 @@ def p_valueItem(t):
             estuAdd.creditos=t[1]
         if Tipo =="Edad":
             estuAdd.edad=t[1]
+        if Tipo =="Correo":
+            estuAdd.correo=t[1]
     elif boolTarea:
         if Tipo =="Carnet":
             tareADD.carnet=t[1]
