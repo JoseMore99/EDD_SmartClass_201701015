@@ -4,7 +4,7 @@ reserved = {
     'type' : 'TTYPE',
     'item' : 'TITEM',
     'Carnet' : 'TCARNET',
-    'Dpi' : 'TDPI',
+    'DPI' : 'TDPI',
     'Nombre' : 'TNOMBRE',
     'Carrera' : 'TCARRERA',
     'Password' : 'TPASSWORD',

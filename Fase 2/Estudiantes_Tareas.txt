@@ -1,7 +1,7 @@
 ¿Elements?
 	¿element type="user"?
 		¿item Carnet = "201183728" $?
-		¿item Dpi = "2050740201006" $?
+		¿item DPI = "2050740201006" $?
 		¿item Nombre = "Alvin Huckett" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "AlvinHuckett_60@outlook.org" $?
@@ -11,7 +11,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201024489" $?
-		¿item Dpi = "5970926381748" $?
+		¿item DPI = "5970926381748" $?
 		¿item Nombre = "Nertie Laurenzi" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "NertieLaurenzi.75@hotmail.es" $?
@@ -21,7 +21,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201210811" $?
-		¿item Dpi = "8795758881548" $?
+		¿item DPI = "8795758881548" $?
 		¿item Nombre = "Lamont Barthrup" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "LamontBarthrup_34@outlook.org" $?
@@ -31,7 +31,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201315898" $?
-		¿item Dpi = "5531711621404" $?
+		¿item DPI = "5531711621404" $?
 		¿item Nombre = "Bernadette Pescud" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "BernadettePescud.10@outlook.com" $?
@@ -41,7 +41,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201582352" $?
-		¿item Dpi = "4172564417242" $?
+		¿item DPI = "4172564417242" $?
 		¿item Nombre = "Bobina Delacroux" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "BobinaDelacroux_46@hotmail.com" $?
@@ -51,7 +51,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201115140" $?
-		¿item Dpi = "8429519350118" $?
+		¿item DPI = "8429519350118" $?
 		¿item Nombre = "Pebrook Gircke" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "PebrookGircke93@undefined.org" $?
@@ -61,7 +61,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201350393" $?
-		¿item Dpi = "9029374304090" $?
+		¿item DPI = "9029374304090" $?
 		¿item Nombre = "Laurie Tumilty" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "LaurieTumilty58@undefined.com" $?
@@ -71,7 +71,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201698163" $?
-		¿item Dpi = "8010354636352" $?
+		¿item DPI = "8010354636352" $?
 		¿item Nombre = "Barn Killingbeck" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "BarnKillingbeck33@gmail.org" $?
@@ -81,7 +81,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201402462" $?
-		¿item Dpi = "3594915493584" $?
+		¿item DPI = "3594915493584" $?
 		¿item Nombre = "Joscelin Fewings" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "JoscelinFewings_56@outlook.es" $?
@@ -91,7 +91,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201643353" $?
-		¿item Dpi = "9692561360208" $?
+		¿item DPI = "9692561360208" $?
 		¿item Nombre = "Llywellyn Woodnutt" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "LlywellynWoodnutt_83@gmail.es" $?
@@ -101,7 +101,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201043689" $?
-		¿item Dpi = "714796787404" $?
+		¿item DPI = "714796787404" $?
 		¿item Nombre = "Ardene Benediktovich" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "ArdeneBenediktovich72@outlook.org" $?
@@ -111,7 +111,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201489697" $?
-		¿item Dpi = "3310894947855" $?
+		¿item DPI = "3310894947855" $?
 		¿item Nombre = "Judye Rossborough" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "JudyeRossborough_49@yahoo.com" $?
@@ -121,7 +121,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201818908" $?
-		¿item Dpi = "2689202578134" $?
+		¿item DPI = "2689202578134" $?
 		¿item Nombre = "Wilbur Alberts" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "WilburAlberts45@hotmail.org" $?
@@ -131,7 +131,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201816850" $?
-		¿item Dpi = "154497044345" $?
+		¿item DPI = "154497044345" $?
 		¿item Nombre = "Emili Palleske" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "EmiliPalleske.89@gmail.com" $?
@@ -141,7 +141,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201232485" $?
-		¿item Dpi = "3762365704505" $?
+		¿item DPI = "3762365704505" $?
 		¿item Nombre = "Vivian Currer" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "VivianCurrer_25@outlook.org" $?
@@ -151,7 +151,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201131811" $?
-		¿item Dpi = "3347258005328" $?
+		¿item DPI = "3347258005328" $?
 		¿item Nombre = "Eloise Trevarthen" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "EloiseTrevarthen91@hotmail.es" $?
@@ -161,7 +161,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201476680" $?
-		¿item Dpi = "4293824642888" $?
+		¿item DPI = "4293824642888" $?
 		¿item Nombre = "Kim Westphal" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "KimWestphal38@yahoo.com" $?
@@ -171,7 +171,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201511649" $?
-		¿item Dpi = "5648266954532" $?
+		¿item DPI = "5648266954532" $?
 		¿item Nombre = "Aylmar Raubenheimer" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "AylmarRaubenheimer.27@hotmail.es" $?
@@ -181,7 +181,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201255643" $?
-		¿item Dpi = "7672150791181" $?
+		¿item DPI = "7672150791181" $?
 		¿item Nombre = "Alvin Huckett" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "AlvinHuckett_63@undefined.org" $?
@@ -191,7 +191,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201947729" $?
-		¿item Dpi = "1430797138430" $?
+		¿item DPI = "1430797138430" $?
 		¿item Nombre = "Camila Dibbert" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "CamilaDibbert.81@gmail.com" $?
@@ -201,7 +201,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201173540" $?
-		¿item Dpi = "3235002226847" $?
+		¿item DPI = "3235002226847" $?
 		¿item Nombre = "Alvin Huckett" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "AlvinHuckett_65@outlook.org" $?
@@ -211,7 +211,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201704168" $?
-		¿item Dpi = "3379162068993" $?
+		¿item DPI = "3379162068993" $?
 		¿item Nombre = "Tim Goldspink" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "TimGoldspink.71@aol.com" $?
@@ -221,7 +221,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201661519" $?
-		¿item Dpi = "9302712249273" $?
+		¿item DPI = "9302712249273" $?
 		¿item Nombre = "Harvey Darbyshire" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "HarveyDarbyshire_63@gmail.com" $?
@@ -231,7 +231,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201309890" $?
-		¿item Dpi = "6364119505269" $?
+		¿item DPI = "6364119505269" $?
 		¿item Nombre = "Grayce Poltone" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "GraycePoltone_20@hotmail.es" $?
@@ -241,7 +241,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201740604" $?
-		¿item Dpi = "2625352358554" $?
+		¿item DPI = "2625352358554" $?
 		¿item Nombre = "Llywellyn Woodnutt" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "LlywellynWoodnutt.46@gmail.org" $?
@@ -251,7 +251,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201646518" $?
-		¿item Dpi = "8696013129504" $?
+		¿item DPI = "8696013129504" $?
 		¿item Nombre = "Aylmar Raubenheimer" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "AylmarRaubenheimer31@aol.com" $?
@@ -261,7 +261,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201766242" $?
-		¿item Dpi = "3780452896411" $?
+		¿item DPI = "3780452896411" $?
 		¿item Nombre = "Franky Viney" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "FrankyViney72@aol.com" $?
@@ -271,7 +271,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201537627" $?
-		¿item Dpi = "6000394094296" $?
+		¿item DPI = "6000394094296" $?
 		¿item Nombre = "Aylmar Raubenheimer" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "AylmarRaubenheimer82@undefined.com" $?
@@ -281,7 +281,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201327675" $?
-		¿item Dpi = "5005953751371" $?
+		¿item DPI = "5005953751371" $?
 		¿item Nombre = "Lamont Barthrup" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "LamontBarthrup.75@hotmail.org" $?
@@ -291,7 +291,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201897987" $?
-		¿item Dpi = "2193345266141" $?
+		¿item DPI = "2193345266141" $?
 		¿item Nombre = "Michelle Glanister" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "MichelleGlanister.13@aol.org" $?
@@ -301,7 +301,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201500866" $?
-		¿item Dpi = "7040168688236" $?
+		¿item DPI = "7040168688236" $?
 		¿item Nombre = "Claybourne Nelmes" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "ClaybourneNelmes_2@aol.com" $?
@@ -311,7 +311,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201359507" $?
-		¿item Dpi = "6474775706799" $?
+		¿item DPI = "6474775706799" $?
 		¿item Nombre = "Olly Brunelleschi" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "OllyBrunelleschi_86@aol.com" $?
@@ -321,7 +321,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201954202" $?
-		¿item Dpi = "2496399691941" $?
+		¿item DPI = "2496399691941" $?
 		¿item Nombre = "Eloise Trevarthen" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "EloiseTrevarthen.4@undefined.org" $?
@@ -331,7 +331,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201412244" $?
-		¿item Dpi = "3239472177167" $?
+		¿item DPI = "3239472177167" $?
 		¿item Nombre = "Eba Keitley" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "EbaKeitley73@undefined.com" $?
@@ -341,7 +341,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201234795" $?
-		¿item Dpi = "9082300809939" $?
+		¿item DPI = "9082300809939" $?
 		¿item Nombre = "Wilbur Alberts" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "WilburAlberts_86@yahoo.com" $?
@@ -351,7 +351,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201594265" $?
-		¿item Dpi = "2831630574772" $?
+		¿item DPI = "2831630574772" $?
 		¿item Nombre = "Ardene Benediktovich" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "ArdeneBenediktovich_57@hotmail.org" $?
@@ -361,7 +361,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201790782" $?
-		¿item Dpi = "3168522176927" $?
+		¿item DPI = "3168522176927" $?
 		¿item Nombre = "Claybourne Nelmes" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "ClaybourneNelmes_82@aol.com" $?
@@ -371,7 +371,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201374369" $?
-		¿item Dpi = "8311431297185" $?
+		¿item DPI = "8311431297185" $?
 		¿item Nombre = "Lionel Messi" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "LionelMessi.17@aol.es" $?
@@ -381,7 +381,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201709702" $?
-		¿item Dpi = "4245428187625" $?
+		¿item DPI = "4245428187625" $?
 		¿item Nombre = "Dillon Blandamere" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "DillonBlandamere_33@undefined.com" $?
@@ -391,7 +391,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201635991" $?
-		¿item Dpi = "2702608963916" $?
+		¿item DPI = "2702608963916" $?
 		¿item Nombre = "Boycie Langlais" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "BoycieLanglais24@aol.es" $?
@@ -401,7 +401,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201389879" $?
-		¿item Dpi = "1332692632257" $?
+		¿item DPI = "1332692632257" $?
 		¿item Nombre = "Darn Studdal" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "DarnStuddal88@gmail.com" $?
@@ -411,7 +411,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201375524" $?
-		¿item Dpi = "3164173770900" $?
+		¿item DPI = "3164173770900" $?
 		¿item Nombre = "Tim Goldspink" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "TimGoldspink_27@yahoo.es" $?
@@ -421,7 +421,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201428558" $?
-		¿item Dpi = "8783633019549" $?
+		¿item DPI = "8783633019549" $?
 		¿item Nombre = "Llywellyn Woodnutt" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "LlywellynWoodnutt.12@gmail.es" $?
@@ -431,7 +431,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201933753" $?
-		¿item Dpi = "6467642780621" $?
+		¿item DPI = "6467642780621" $?
 		¿item Nombre = "Bobina Delacroux" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "BobinaDelacroux_64@gmail.com" $?
@@ -441,7 +441,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201774497" $?
-		¿item Dpi = "6327689577005" $?
+		¿item DPI = "6327689577005" $?
 		¿item Nombre = "Llywellyn Woodnutt" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "LlywellynWoodnutt_44@aol.org" $?
@@ -451,7 +451,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201145786" $?
-		¿item Dpi = "4820546644233" $?
+		¿item DPI = "4820546644233" $?
 		¿item Nombre = "Harvey Darbyshire" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "HarveyDarbyshire.56@outlook.com" $?
@@ -461,7 +461,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201509061" $?
-		¿item Dpi = "3761268073554" $?
+		¿item DPI = "3761268073554" $?
 		¿item Nombre = "Tim Goldspink" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "TimGoldspink.36@aol.com" $?
@@ -471,7 +471,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201068965" $?
-		¿item Dpi = "7207003476187" $?
+		¿item DPI = "7207003476187" $?
 		¿item Nombre = "Tim Goldspink" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "TimGoldspink.1@yahoo.org" $?
@@ -481,7 +481,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201991578" $?
-		¿item Dpi = "7437219208336" $?
+		¿item DPI = "7437219208336" $?
 		¿item Nombre = "Olly Brunelleschi" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "OllyBrunelleschi.78@yahoo.org" $?
@@ -491,7 +491,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201803912" $?
-		¿item Dpi = "3995410773680" $?
+		¿item DPI = "3995410773680" $?
 		¿item Nombre = "Emili Palleske" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "EmiliPalleske.68@gmail.com" $?
@@ -501,7 +501,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201921767" $?
-		¿item Dpi = "5042024988582" $?
+		¿item DPI = "5042024988582" $?
 		¿item Nombre = "Consolata Reskelly" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "ConsolataReskelly.30@undefined.com" $?
@@ -511,7 +511,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201157605" $?
-		¿item Dpi = "2503385887437" $?
+		¿item DPI = "2503385887437" $?
 		¿item Nombre = "Alonzo Seagrove" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "AlonzoSeagrove_35@undefined.org" $?
@@ -521,7 +521,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201761573" $?
-		¿item Dpi = "5372214388411" $?
+		¿item DPI = "5372214388411" $?
 		¿item Nombre = "Alonzo Seagrove" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "AlonzoSeagrove_54@hotmail.es" $?
@@ -531,7 +531,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201825364" $?
-		¿item Dpi = "6772854332066" $?
+		¿item DPI = "6772854332066" $?
 		¿item Nombre = "Phillis Syrie" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "PhillisSyrie_17@hotmail.es" $?
@@ -541,7 +541,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201022466" $?
-		¿item Dpi = "579054127201" $?
+		¿item DPI = "579054127201" $?
 		¿item Nombre = "Wash Sedgemore" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "WashSedgemore_70@outlook.com" $?
@@ -551,7 +551,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201006295" $?
-		¿item Dpi = "6483009710551" $?
+		¿item DPI = "6483009710551" $?
 		¿item Nombre = "Roderigo Gomme" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "RoderigoGomme_92@yahoo.org" $?
@@ -561,7 +561,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201116100" $?
-		¿item Dpi = "7247421869888" $?
+		¿item DPI = "7247421869888" $?
 		¿item Nombre = "Franky Viney" $?
 		¿item Carrera = "Ingenieria Quimica" $?
 		¿item Correo = "FrankyViney_42@hotmail.es" $?
@@ -571,7 +571,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201773473" $?
-		¿item Dpi = "1563507262381" $?
+		¿item DPI = "1563507262381" $?
 		¿item Nombre = "Krystal Crellin" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "KrystalCrellin.48@outlook.org" $?
@@ -581,7 +581,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201119966" $?
-		¿item Dpi = "9030770152211" $?
+		¿item DPI = "9030770152211" $?
 		¿item Nombre = "Michelle Glanister" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "MichelleGlanister87@outlook.com" $?
@@ -591,7 +591,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201669286" $?
-		¿item Dpi = "3126321523297" $?
+		¿item DPI = "3126321523297" $?
 		¿item Nombre = "Tim Goldspink" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "TimGoldspink_45@gmail.es" $?
@@ -601,7 +601,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201147451" $?
-		¿item Dpi = "9093933675701" $?
+		¿item DPI = "9093933675701" $?
 		¿item Nombre = "Ellerey Sherwyn" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "EllereySherwyn.51@gmail.es" $?
@@ -611,7 +611,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201864201" $?
-		¿item Dpi = "8208413026556" $?
+		¿item DPI = "8208413026556" $?
 		¿item Nombre = "Claybourne Nelmes" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "ClaybourneNelmes.78@hotmail.com" $?
@@ -621,7 +621,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201667272" $?
-		¿item Dpi = "9443025623424" $?
+		¿item DPI = "9443025623424" $?
 		¿item Nombre = "Adriaens Timms" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "AdriaensTimms43@aol.org" $?
@@ -631,7 +631,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201668149" $?
-		¿item Dpi = "6435886693765" $?
+		¿item DPI = "6435886693765" $?
 		¿item Nombre = "Harvey Darbyshire" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "HarveyDarbyshire_31@gmail.org" $?
@@ -641,7 +641,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201764124" $?
-		¿item Dpi = "6773833243077" $?
+		¿item DPI = "6773833243077" $?
 		¿item Nombre = "Harvey Darbyshire" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "HarveyDarbyshire.59@gmail.es" $?
@@ -651,7 +651,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201516603" $?
-		¿item Dpi = "4062043125856" $?
+		¿item DPI = "4062043125856" $?
 		¿item Nombre = "Aylmar Raubenheimer" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "AylmarRaubenheimer.85@aol.com" $?
@@ -661,7 +661,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201327079" $?
-		¿item Dpi = "8292286385716" $?
+		¿item DPI = "8292286385716" $?
 		¿item Nombre = "Franky Viney" $?
 		¿item Carrera = "Ingenieria Industrial" $?
 		¿item Correo = "FrankyViney.59@aol.es" $?
@@ -671,7 +671,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201906670" $?
-		¿item Dpi = "2245119831085" $?
+		¿item DPI = "2245119831085" $?
 		¿item Nombre = "Franky Viney" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "FrankyViney_49@yahoo.es" $?
@@ -681,7 +681,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201461415" $?
-		¿item Dpi = "8579079230016" $?
+		¿item DPI = "8579079230016" $?
 		¿item Nombre = "Roderigo Gomme" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "RoderigoGomme_55@aol.org" $?
@@ -691,7 +691,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201009015" $?
-		¿item Dpi = "1962623323417" $?
+		¿item DPI = "1962623323417" $?
 		¿item Nombre = "Afton Hounson" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "AftonHounson.43@aol.com" $?
@@ -701,7 +701,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201137248" $?
-		¿item Dpi = "4264540703955" $?
+		¿item DPI = "4264540703955" $?
 		¿item Nombre = "Eba Keitley" $?
 		¿item Carrera = "Ingenieria Mecanica" $?
 		¿item Correo = "EbaKeitley83@outlook.org" $?
@@ -711,7 +711,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201339503" $?
-		¿item Dpi = "1169570189320" $?
+		¿item DPI = "1169570189320" $?
 		¿item Nombre = "Drusilla Louca" $?
 		¿item Carrera = "Ingenieria Mecanica Industrial" $?
 		¿item Correo = "DrusillaLouca1@outlook.com" $?
@@ -721,7 +721,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201110247" $?
-		¿item Dpi = "7882408800987" $?
+		¿item DPI = "7882408800987" $?
 		¿item Nombre = "Aylmar Raubenheimer" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "AylmarRaubenheimer_82@yahoo.org" $?
@@ -731,7 +731,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201125580" $?
-		¿item Dpi = "1846903502498" $?
+		¿item DPI = "1846903502498" $?
 		¿item Nombre = "Boycie Langlais" $?
 		¿item Carrera = "Ingenieria en Ciencias y Sistemas" $?
 		¿item Correo = "BoycieLanglais.61@hotmail.com" $?
@@ -741,7 +741,7 @@
 	¿$element?
 	¿element type="user"?
 		¿item Carnet = "201315288" $?
-		¿item Dpi = "7044319749868" $?
+		¿item DPI = "7044319749868" $?
 		¿item Nombre = "Joscelin Fewings" $?
 		¿item Carrera = "Ingenieria Mecanica Electrica" $?
 		¿item Correo = "JoscelinFewings.27@yahoo.es" $?

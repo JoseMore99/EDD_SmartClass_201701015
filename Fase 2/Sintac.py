@@ -96,7 +96,7 @@ def p_valueItem(t):
     if boolEstu:
         if Tipo =="Carnet":
             estuAdd.carnet=t[1]
-        if Tipo =="Dpi":
+        if Tipo =="DPI":
             estuAdd.dpi=t[1]
         if Tipo =="Nombre":
             estuAdd.nombre=t[1]

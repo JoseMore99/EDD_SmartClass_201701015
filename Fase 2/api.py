@@ -92,8 +92,10 @@ def estudiantesPut():
 
 @app.route("/estudiante", methods=['DELETE'])
 def estudiantesDelete():
-    
-    return ''
+    peticio = request.json
+    carnet = peticio['carnet']
+    avl.eliminar(int(carnet))
+    return 'ESTUDIANTE ELIMINADO'
 
 @app.route("/estudiante", methods=['GET'])
 def estudiantesGet():
