@@ -5,7 +5,7 @@ import generador
 import os
 from Almacen.AVL import avl
 from Almacen.ArbolB2 import Arbol_B
-from objetos import curso
+from objetos import curso,estudiante
 
 app= Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -72,8 +72,18 @@ def reportes():
 
 @app.route("/estudiante", methods=['POST'])
 def estudiantesPost():
-    
-    return ''
+    peticio = request.json
+    carnet = peticio['carnet']
+    carrera = peticio['carrera']
+    correo = peticio['correo']
+    nombre = peticio['nombre']
+    dpi = peticio['DPI']
+    edad = peticio['edad']
+    creditos = peticio['creditos']
+    passw = peticio['password']
+    Nuevo = estudiante(carnet,creditos,dpi,edad,nombre,carrera,correo,passw)
+    avl.insertar(int(carnet),Nuevo)
+    return 'ESTUDIANTE INGRESADO!'
     
 @app.route("/estudiante", methods=['PUT'])
 def estudiantesPut():

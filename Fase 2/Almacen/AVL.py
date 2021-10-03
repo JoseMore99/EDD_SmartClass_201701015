@@ -50,8 +50,6 @@ class AVL:
         self.equilibrar()
         return raiz
                 
-
-    
     def MaxIz(self,raiz):
         while(raiz.der.raiz):
             raiz=raiz.der.raiz
@@ -77,7 +75,6 @@ class AVL:
                 self.RotIz()
                 self.actuAltura()
                 self.actuEquili()
-
 
     def actuAltura(self, recursivo =  True):
         if self.raiz == None:
