@@ -5,7 +5,7 @@ import generador
 import os
 from Almacen.AVL import avl
 from Almacen.ArbolB2 import Arbol_B
-from objetos import curso,estudiante
+from objetos import curso,estudiante,tarea
 
 app= Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -127,23 +127,58 @@ def estudiantesGet():
 
 @app.route("/recordatorio", methods=['POST'])
 def recordatorioPost():
-    
-    return ''
+    peticio = request.json
+    carnet = peticio['Carnet']
+    nombre = peticio['Nombre']
+    desc = peticio['Descripcion']
+    materi = peticio['Materia']
+    fecha = peticio['Fecha']
+    hora = peticio['Hora']
+    splitHora = hora.split(':')
+    estado = peticio['Estado']
+    Nuevo = tarea(carnet,nombre,desc,materi,fecha,hora,estado)
+    datos = fecha.split("/")
+    Mes=int(datos[1])
+    anio=int(datos[2])
+    dia=int(datos[0])
+    carne = int(carnet)
+    apunta = avl.buscador(carne)
+    print(apunta.estu.carnet)
+    apunta.estu.insertar_tarea(Nuevo, anio, Mes,dia,int(splitHora[0]))
+    return 'RECORDATORIO AÑADIDO!'
 
 @app.route("/recordatorio", methods=['PUT'])
 def recordatorioPut():
-    
     return ''
-
 @app.route("/recordatorio", methods=['DELETE'])
-def recordatorioDelete():
-    
+def recordatorioDelete():  
     return ''
 
 @app.route("/recordatorio", methods=['GET'])
 def recordatorioGet():
-
-    return ''
+    peticio = request.json
+    carnet = peticio['Carnet']
+    fecha = peticio['Fecha']
+    hora = peticio['Hora']
+    splitHora = hora.split(':')
+    datos = fecha.split("/")
+    Mes=int(datos[1])
+    anio=int(datos[2])
+    dia=int(datos[0])
+    apunta = avl.buscador(int(carnet))
+    apunta2= apunta.estu.devolv_anio(anio)
+    apunta3 = apunta2.devolv_mes(Mes)
+    encontrado= apunta3.MatDis.buscar_dato(int(splitHora[0]),dia)
+    datos ={
+        "Carnet": encontrado.carnet,
+        "Nombre": encontrado.nombre,
+        "Descripcion":encontrado.desc,
+        "Materia": encontrado.materi,
+        "Fecha": encontrado.fecha,
+        "Hora": encontrado.hora,
+        "Estado": encontrado.estado
+    }
+    return datos
 
 @app.route("/cursosEstudiante", methods=['POST'])
 def cursosEstudiantePost():

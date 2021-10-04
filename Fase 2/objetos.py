@@ -113,6 +113,12 @@ class anios:
         aux = self.semestre.head.siguiente
         aux.contenido.abb.insertar(curso)
 
+    def devolv_mes(self, mes):
+        aux= self.meses.head
+        while aux:
+            if aux.contenido.mes == mes:
+                return aux.contenido
+            aux = aux.siguiente
         
 class meses: 
     def __init__(self, mes):
