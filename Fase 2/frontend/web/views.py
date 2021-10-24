@@ -13,7 +13,12 @@ def adminis(request):
         contrasenia = request.POST["contra"]
         if usuario == "admin" and contrasenia == "admin":
             return render(request,"adminis.html")
-        
-        estudiante=requests.get('http://127.0.0.1:5000/chet',usuario)
+        usu = {
+            "carnet": usuario
+        }
+        estudiante=requests.get('http://localhost:3000//estudiante',json=usu)
+        encontrado= estudiante.json()
+        if contrasenia == encontrado["password"]:
+            return render(request,"usuarios.html",context=encontrado) 
         
     return redirect("inicio")

@@ -10,21 +10,76 @@
     <title>SMART CLASS</title>
 </head>
 <body>
-    <h1>ADMINISTRADORA</h1>
-    <form action="/adminis/" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+    <h1>ADMINISTRADOR</h1>
         <div class="container-md">
             <div class="row">
                 <div class="col">
-                    <h1>Usuarios</h1>
-                    </div>
-                <div class="col"></div>
+                    <h2>Carga masiva de estudiantes</h2>
+                </div>
+            <form action="/adminis/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="col">
+                    <input class="form-control" type="file" id="formFile" name="CargaEstu">
+                </div>
+            </form>
             </div>
-
-            
             <div class="row">
+                <div class="col">
+                    <h2>Carga masiva de cursos de pensum</h2>
+                </div>
+                <div class="col">
+                    <input class="form-control" type="file" id="formFile" name="CargaPensu">
+                </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Carga masiva de cursos de estudiante</h2>
+                </div>
+                <div class="col">
+                    <input class="form-control" type="file" id="formFile" name="CargaCursos">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Carga masiva de los apuntes de estudiantes</h2>
+                </div>
+                <div class="col">
+                    <input class="form-control" type="file" id="formFile" name="CargaApuntes">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Reporte de todos los apuntes de estudiantes</h2>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Reporte de todos los estudiantes registrados</h2>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Reporte del grafo de prerrequisitos de los cursos del pensum</h2>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Reporte del encriptado arbol de merkle</h2>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+                    
         </div>
-    </form>
 </body>
 </html>

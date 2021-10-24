@@ -8,19 +8,24 @@
     <title>SMART CLASS</title>
 </head>
 <body>
-    <h1>ADMINISTRADORA</h1>
+    <h1>VENTANA DE USUARIO:</h1>
     <form action="/adminis/" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="container-md">
             <div class="row">
                 <div class="col">
-                    <h1>Usuarios</h1>
+                    <h1>Usuario: {{Nombre}}</h1>
                     </div>
                 <div class="col"></div>
             </div>
 
-            
             <div class="row">
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-lg btn-primary" type="submit">Realizar Apuntes</button>
+                <button class="btn btn-lg btn-primary" type="submit">Ver Apuntes Realizados</button>
+                <button class="btn btn-lg btn-primary" type="submit">Reporte de todos los cursos previos</button>
+                <button class="btn btn-lg btn-primary" type="submit">Reporte de cursos asignados</button>
             </div>
         </div>
     </form>
