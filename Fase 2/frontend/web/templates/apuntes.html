@@ -1,0 +1,47 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="https://bootswatch.com/_assets/css/custom.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>SMART CLASS</title>
+</head>
+<body>
+    <h1>VENTANA DE USUARIO:</h1>
+        <div class="container-md">
+            <div class="row">
+                <div class="col">
+                    <h1>Usuario: {{Nombre}}</h1>
+                    </div>
+                <div class="col"></div>
+            </div>
+            <form action="/apun" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <h1>Titulo:</h1>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingresar Titulo" name = "titulo">
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h1>Contenido:</h1>
+                </div>
+                <div class="col">
+                    <textarea class="form-control" id="exampleTextarea" rows="3" name = "Contenido"></textarea>
+                </div>
+                
+            </div>
+            <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-secondary">Guardar</button>
+            </div>
+        </form>
+        </div>
+  
+</body>
+</html>

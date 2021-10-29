@@ -9,8 +9,6 @@
 </head>
 <body>
     <h1>VENTANA DE USUARIO:</h1>
-    <form action="/adminis/" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
         <div class="container-md">
             <div class="row">
                 <div class="col">
@@ -22,12 +20,23 @@
             <div class="row">
             </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-lg btn-primary" type="submit">Realizar Apuntes</button>
-                <button class="btn btn-lg btn-primary" type="submit">Ver Apuntes Realizados</button>
-                <button class="btn btn-lg btn-primary" type="submit">Reporte de todos los cursos previos</button>
-                <button class="btn btn-lg btn-primary" type="submit">Reporte de cursos asignados</button>
+                <div class="row">
+                    <form action="/apuntes/" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <button class="btn btn-lg btn-primary" type="submit">Realizar Apuntes</button>
+                    </form>
+                </div>
+                <div class="row">
+                    <button class="btn btn-lg btn-primary" type="submit">Ver Apuntes Realizados</button>
+                </div>
+                <div class="row">
+                    <button class="btn btn-lg btn-primary" type="submit">Reporte de todos los cursos previos</button>
+                </div>
+                <div class="row">
+                    <button class="btn btn-lg btn-primary" type="submit">Reporte de cursos asignados</button>
+                </div>
+                
             </div>
         </div>
-    </form>
 </body>
 </html>

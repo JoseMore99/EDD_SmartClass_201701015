@@ -5,13 +5,14 @@ import generador
 import os
 from Almacen.AVL import avl
 from Almacen.ArbolB2 import Arbol_B
+from Almacen.Hash import THash
 from objetos import curso,estudiante,tarea
 
 app= Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 Pensum = Arbol_B(5)
-
+Apuntes = THash(7)
 @app.route("/")
 def hola():
     return "Pagina principal"
@@ -214,6 +215,17 @@ def cursosPensumPost():
         Pensum.insertar(nuevo)
         #Pensum.insertar(int(i["Codigo"]))
     return 'Carga de cursos en Pensum completa'
+
+@app.route("/apuntes", methods=['POST'])
+def apuntesPost():
+    peticion = request.json
+    titulos = peticion["titulos"]
+    contenido = peticion["contenido"]
+    Carnet=int(peticion["carnet"])
+    Apuntes.insertar(Carnet,titulos,contenido)
+    return 'Carga de apunte completa'
+
+
 
 #URLS DE PRUEBAS UNICAMENTE 
 @app.route("/pagina2")
