@@ -23,5 +23,7 @@ urlpatterns = [
     path('', inicio,name='inicio'),
     path('adminis', adminis,name='adminis'),
     path('apuntes/',usuApunte, name='apuntes'),
-    path('apun',apunte, name='apun')
+    path('apun',apunte, name='apun'),
+    path('lstapuntes/',lst_apuntes, name='listaapun'),
+    path('cargaE',carga_estu, name='cargaE'),
 ]

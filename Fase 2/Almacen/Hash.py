@@ -40,6 +40,18 @@ class THash:
         pocision  = llave%self.tamanio
         return pocision
 
+    def devolver(self, llave):
+        apuntes=[]
+        for i in self.tabla:
+            if i is None:
+                continue
+            if i.carnet == llave:
+                apuntador = i.apuntes.head
+                while apuntador:
+                    apuntes.append(apuntador.contenido)
+                    apuntador = apuntador.siguiente
+        return apuntes
+
 prueba = THash(17)
 prueba.insertar(14,"","")
 prueba.insertar(31,"","")

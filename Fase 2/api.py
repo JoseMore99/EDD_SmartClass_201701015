@@ -21,11 +21,12 @@ def hola():
 @app.route("/carga", methods=['POST'])
 def cargaMasivaEstu():
     peticion = request.json
-    if peticion['tipo']=="estudiante":
+    """ if peticion['tipo']=="estudiante":
         f = open(peticion['path'], "r", encoding="utf-8")
         mensaje = f.read()
         f.close()
         parser.parse(mensaje)
+        return 'Carga Masiva de Estudiantes con exito'
     elif peticion['tipo']=="recordatorio":
         try:
             f = open(peticion['path'], "r", encoding="utf-8")
@@ -34,7 +35,19 @@ def cargaMasivaEstu():
             parser.parse(mensaje)
         except: 
             print("ya cargo")
-        return 'Carga Masiva de Tareas con exito'
+        return 'Carga Masiva de Tareas con exito' """
+    for i in peticion['estudiantes']:
+        carnet = i['carnet']
+        print(carnet)
+        carrera = i['carrera']
+        correo = i['correo']
+        nombre = i['nombre']
+        dpi = i['DPI']
+        edad = i['edad']
+        creditos = 0#i['creditos']
+        passw = i['password']
+        Nuevo = estudiante(carnet,creditos,dpi,edad,nombre,carrera,correo,passw)
+        avl.insertar(int(carnet),Nuevo)
     return 'Carga Masiva de Estudiantes con exito'
 
 @app.route("/reporte", methods=['GET'])
@@ -224,6 +237,16 @@ def apuntesPost():
     Carnet=int(peticion["carnet"])
     Apuntes.insertar(Carnet,titulos,contenido)
     return 'Carga de apunte completa'
+
+@app.route("/apuntes", methods=['GET'])
+def apuntesGet():
+    lista ={}
+    peticion = request.json
+    Carnet=int(peticion["carnet"])
+    apuntes = Apuntes.devolver(Carnet)
+    for i in apuntes:
+        lista[i.titulo]=i.contenido
+    return lista
 
 
 

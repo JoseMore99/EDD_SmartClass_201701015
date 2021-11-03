@@ -16,10 +16,13 @@
                 <div class="col">
                     <h2>Carga masiva de estudiantes</h2>
                 </div>
-            <form action="/adminis/" method="POST" enctype="multipart/form-data">
+            <form action="/cargaE" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                 <div class="col">
                     <input class="form-control" type="file" id="formFile" name="CargaEstu">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-secondary">Enviar</button>
                 </div>
             </form>
             </div>
@@ -81,5 +84,12 @@
             </div>
                     
         </div>
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>    
+    {% endif %}
 </body>
 </html>

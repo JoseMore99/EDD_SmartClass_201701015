@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 import requests 
+import json
 
 # Create your views here.
 Actual ={}
@@ -32,12 +34,48 @@ def usuApunte(request):
 def apunte(request):
     global Actual
     if request.method == "POST":
-        titulos = request.POST["titulo"]
-        contenido = request.POST["Contenido"]
-        apunte ={
-            "titulos":titulos,
-            "contenido":contenido,
-            "carnet":Actual["Carnet"]
+        try:
+            titulos = request.POST["titulo"]
+            contenido = request.POST["Contenido"]
+            apunte ={
+                "titulos":titulos,
+                "contenido":contenido,
+                "carnet":Actual["Carnet"]
+            }
+            requests.post("http://localhost:3000//apuntes",json=apunte)
+            messages.success(request, 'Apunte enviado con éxito.')
+        except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar el Apunte.')
+    return render(request,"usuarios.html",context=Actual)
+
+def lst_apuntes(request):
+    global Actual
+    apun= {
+            "carnet": Actual["Carnet"]
         }
-        requests.post("http://localhost:3000//apuntes",json=apunte)
-    return render(request,"usuarios.html",context=Actual) 
+    estudiante=requests.get('http://localhost:3000//apuntes',json=apun)
+    encontrado= estudiante.json()
+    apuntes = []
+    titulo=[]
+    contenido=[]
+    for i in encontrado:
+        titulo.append(i)
+        contenido.append(encontrado[i])
+    apuntes.append(titulo)
+    apuntes.append(contenido)
+    print(apuntes)
+    ctx={
+        "apuntes":apuntes,
+        "Nombre":Actual['Nombre']
+    }
+    return render(request,"lst_apuntes.html",context=ctx)
+
+def carga_estu(request):
+    JsonEstu = request.FILES["CargaEstu"].read()
+    envio = json.loads(JsonEstu.decode('utf-8'))
+    requests.post("http://localhost:3000//carga",json=envio)
+    try:
+        messages.success(request, 'Carga de estudiantes realizado con éxito.')
+    except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar el Apunte.')
+    return render(request,"adminis.html")
