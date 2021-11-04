@@ -56,14 +56,11 @@ def lst_apuntes(request):
     estudiante=requests.get('http://localhost:3000//apuntes',json=apun)
     encontrado= estudiante.json()
     apuntes = []
-    titulo=[]
-    contenido=[]
     for i in encontrado:
-        titulo.append(i)
+        contenido=[]
+        contenido.append(i)
         contenido.append(encontrado[i])
-    apuntes.append(titulo)
-    apuntes.append(contenido)
-    print(apuntes)
+        apuntes.append(contenido)
     ctx={
         "apuntes":apuntes,
         "Nombre":Actual['Nombre']
@@ -76,6 +73,16 @@ def carga_estu(request):
     requests.post("http://localhost:3000//carga",json=envio)
     try:
         messages.success(request, 'Carga de estudiantes realizado con éxito.')
+    except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar al subir los estudiantes')
+    return render(request,"adminis.html")
+
+def carga_apun(request):
+    JsonEstu = request.FILES["CargaApun"].read()
+    envio = json.loads(JsonEstu.decode('utf-8'))
+    requests.post("http://localhost:3000//apuntesM",json=envio)
+    try:
+        messages.success(request, 'Carga de Apuntes realizado con éxito.')
     except Exception as e:
             messages.error(request, 'Ocurrió un error al enviar el Apunte.')
     return render(request,"adminis.html")

@@ -30,9 +30,15 @@
                 <div class="col">
                     <h2>Carga masiva de cursos de pensum</h2>
                 </div>
+                <form action="/cargaA" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                 <div class="col">
-                    <input class="form-control" type="file" id="formFile" name="CargaPensu">
+                    <input class="form-control" type="file" id="formFile" name="CargaApun">
                 </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-secondary">Enviar</button>
+                </div>
+            </form>
             </div>
             <div class="row">
                 <div class="col">

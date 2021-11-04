@@ -59,7 +59,7 @@ def reportes():
         generador.grafAVL(avl.raiz,archi)
         archi.write("\n}")
         archi.close()
-        os.system('dot -Tsvg grafAVL.dot -o ArbolAVL1.svg')
+        os.system('dot -Tsvg grafAVL.dot -o  frontend/web/static/ArbolAVL1.svg')
         return 'GRAFICA AVL REALIZADA CON EXITO!!'
     elif peticion['tipo']==1:
         puntero = avl.buscador(int(peticion['carnet']))
@@ -81,7 +81,40 @@ def reportes():
             generador.grafB(apuntaAnio.semestre.head.contenido.abb.raiz)
         elif int(semestre) ==2:
             generador.grafB(apuntaAnio.semestre.head.siguiente.contenido.abb.raiz)
-        return 'GRAFICA ARBOL B DE CURSOS REALIZADA CON EXITO!!'
+    elif peticion['tipo']==5:
+        archi = open("grafAVL.dot","w")
+        archi.write("digraph G{\nnode [shape=square];\n")
+        for i in Apuntes.tabla:
+            if i == None:
+                continue
+            archi.write("rank = same{"+str(i.carnet)+"->")
+            apuntes = Apuntes.devolver(i.carnet)
+            cuenta=0 
+            for j in apuntes:
+                cuenta+=1
+                if cuenta == len(apuntes):
+                    archi.write(j.titulo)
+                    continue
+                archi.write('"'+j.titulo+'"->')
+            archi.write("}\n")
+            cuenta=0 
+        for i in Apuntes.tabla:
+            cuenta+=1
+            if i == None:
+                if cuenta == len(apuntes):
+                    archi.write('" "')
+                    continue
+                archi.write('" "->')
+                continue
+            if cuenta == len(apuntes):
+                    archi.write(str(i.carnet))
+                    continue
+            archi.write(str(i.carnet)+"->")
+        archi.write("\n}")
+        archi.close()
+        os.system('dot -Tsvg grafAVL.dot -o  frontend/web/static/hash.svg')
+        
+        return 'GRAFICA Tabla hash DE apuntes REALIZADA CON EXITO!!'
     return ''
 
 @app.route("/estudiante", methods=['POST'])
@@ -247,6 +280,19 @@ def apuntesGet():
     for i in apuntes:
         lista[i.titulo]=i.contenido
     return lista
+    
+@app.route("/apuntesM", methods=['POST'])
+def apuntesMasiva():
+    peticion = request.json
+    for i in peticion['usuarios']:
+        carnet = i['carnet']
+        print(carnet)
+        for j in i['apuntes']:
+            titulos = j["Título"]
+            contenido = j["Contenido"]
+            Apuntes.insertar(carnet,titulos,contenido)
+        
+    return 'Carga masiva de apuntes competa'
 
 
 

@@ -25,5 +25,6 @@ urlpatterns = [
     path('apuntes/',usuApunte, name='apuntes'),
     path('apun',apunte, name='apun'),
     path('lstapuntes/',lst_apuntes, name='listaapun'),
-    path('cargaE',carga_estu, name='cargaE'),
+    path('cargaE',carga_estu, name='cargaE'),#carga de estudiantes
+    path('cargaA',carga_apun, name='cargaA'),#carga de apuntes
 ]
