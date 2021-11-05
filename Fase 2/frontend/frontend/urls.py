@@ -22,9 +22,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio,name='inicio'),
     path('adminis', adminis,name='adminis'),
+    path('registro', Registrarbtn,name='registro'),
+    path('registrar', Registro,name='registrar'),
     path('apuntes/',usuApunte, name='apuntes'),
     path('apun',apunte, name='apun'),
+    path('volv',volverA, name='volv'),
     path('lstapuntes/',lst_apuntes, name='listaapun'),
     path('cargaE',carga_estu, name='cargaE'),#carga de estudiantes
     path('cargaA',carga_apun, name='cargaA'),#carga de apuntes
+    path('cargaC',carga_hash, name='cargaC'),#carga de reporte de tabla hash
 ]

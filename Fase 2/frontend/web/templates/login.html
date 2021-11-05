@@ -10,9 +10,10 @@
     <title>SMART CLASS</title>
 </head>
 <body>
-    <form action="/adminis" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+    
         <div class="container-md">
+            <form action="/adminis" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
             <div class="row">
                 <div class="col">
                     <h1>LOGIN</h1>
@@ -29,9 +30,15 @@
                     </div>
                     <div class="col"><button type="submit" class="btn btn-dark">Ingresar</button></div>
             </div>
+        </form>
             <div class="row">
+                <form action="/registro" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-dark">Registrar</button>
+                </form>
             </div>
         </div>
-    </form>
+    
+    
 </body>
 </html>

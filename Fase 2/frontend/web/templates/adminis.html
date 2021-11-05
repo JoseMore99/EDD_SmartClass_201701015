@@ -44,9 +44,15 @@
                 <div class="col">
                     <h2>Carga masiva de cursos de estudiante</h2>
                 </div>
+                <form action="/cargaC" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                 <div class="col">
                     <input class="form-control" type="file" id="formFile" name="CargaCursos">
                 </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-secondary">Enviar</button>
+                </div>
+            </form>
             </div>
             <div class="row">
                 <div class="col">
@@ -57,12 +63,15 @@
                 </div>
             </div>
             <div class="row">
+                <form action="/cargaC" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                 <div class="col">
                     <h2>Reporte de todos los apuntes de estudiantes</h2>
                 </div>
                 <div class="col">
-
+                    <button type="submit" class="btn btn-secondary">Ver</button>
                 </div>
+                </form>
             </div>
             <div class="row">
                 <div class="col">

@@ -15,6 +15,7 @@ class THash:
     def __init__(self, tamanio):
         self.tamanio = tamanio
         self.tabla = [NodoHash for x in range(tamanio)]
+        self.cantidad =0
 
         for i in range(tamanio):
             self.tabla[i] = None
@@ -25,6 +26,7 @@ class THash:
         if self.tabla[pocision] is None:
             self.tabla[pocision] = NodoHash(llave)
             self.tabla[pocision].apuntes.insertar(apunteNew)
+            self.cantidad+=1
         elif self.tabla[pocision].carnet == llave:
             self.tabla[pocision].apuntes.insertar(apunteNew)
         else:
@@ -34,7 +36,10 @@ class THash:
                 pocision = self.formulaHash(pocision+contador)
                 contador+=1
             self.tabla[pocision] = NodoHash(llave)
+            self.cantidad+=1
             self.tabla[pocision].apuntes.insertar(apunteNew)
+        if self.cantidad> (self.tamanio/2):
+            self.rehash()
 
     def formulaHash(self, llave):
         pocision  = llave%self.tamanio
@@ -51,6 +56,23 @@ class THash:
                     apuntes.append(apuntador.contenido)
                     apuntador = apuntador.siguiente
         return apuntes
+    
+    def rehash(self):
+        num = self.tamanio +1
+        print(self.tamanio)
+        bol= True
+        while bol:
+            for i in range(2,num):
+                if num % i == 0:
+                    break
+                elif i == num-1:
+                    self.tamanio=num
+                    while True:
+                        self.tabla.append(None)
+                        if len(self.tabla)==self.tamanio:
+                            break
+                    bol=False
+            num +=1
 
 prueba = THash(17)
 prueba.insertar(14,"","")
@@ -66,6 +88,6 @@ prueba.insertar(16,"","")
 
 for i in range(len(prueba.tabla)):
     if prueba.tabla[i] is None:
-       # print(str(i)+"- None")
+        print(str(i)+"- None")
         continue
-   # print(str(i)+"-"+str(prueba.tabla[i].carnet))
+    print(str(i)+"-"+str(prueba.tabla[i].carnet))

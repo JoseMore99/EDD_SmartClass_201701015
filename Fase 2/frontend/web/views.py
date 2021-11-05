@@ -86,3 +86,26 @@ def carga_apun(request):
     except Exception as e:
             messages.error(request, 'Ocurrió un error al enviar el Apunte.')
     return render(request,"adminis.html")
+
+def carga_hash(request):
+    envio ={
+        "tipo":5
+    }
+    requests.get("http://localhost:3000//reporte",json=envio)
+    try:
+        messages.success(request, 'Reporte de Apuntes realizado con éxito.')
+        return render(request,"reportes.html")
+    except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar el reporte.')
+    return render(request,"adminis.html")
+
+def volverA(request):
+    return render(request,"adminis.html")
+
+def Registrarbtn(request):
+    return render(request,"registro.html")
+
+def Registro(request):
+    carnet = request.POST["car"]
+    passw = request.POST["pass"]
+    return redirect("inicio")

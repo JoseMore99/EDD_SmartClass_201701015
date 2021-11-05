@@ -82,10 +82,13 @@ def reportes():
         elif int(semestre) ==2:
             generador.grafB(apuntaAnio.semestre.head.siguiente.contenido.abb.raiz)
     elif peticion['tipo']==5:
-        archi = open("grafAVL.dot","w")
+        archi = open("hash.dot","w")
         archi.write("digraph G{\nnode [shape=square];\n")
+        contadorNone = 1
         for i in Apuntes.tabla:
             if i == None:
+                archi.write("b"+str(contadorNone)+'[label=" "]\n')
+                contadorNone+=1
                 continue
             archi.write("rank = same{"+str(i.carnet)+"->")
             apuntes = Apuntes.devolver(i.carnet)
@@ -93,26 +96,28 @@ def reportes():
             for j in apuntes:
                 cuenta+=1
                 if cuenta == len(apuntes):
-                    archi.write(j.titulo)
+                    archi.write('"'+j.titulo+'"')
                     continue
                 archi.write('"'+j.titulo+'"->')
             archi.write("}\n")
-            cuenta=0 
+        cuenta=0 
+        contadorNone=0
         for i in Apuntes.tabla:
             cuenta+=1
             if i == None:
-                if cuenta == len(apuntes):
-                    archi.write('" "')
+                contadorNone+=1
+                if cuenta == len(Apuntes.tabla):
+                    archi.write("b"+str(contadorNone))
                     continue
-                archi.write('" "->')
+                archi.write("b"+str(contadorNone)+'->')
                 continue
-            if cuenta == len(apuntes):
+            if cuenta == len(Apuntes.tabla):
                     archi.write(str(i.carnet))
                     continue
             archi.write(str(i.carnet)+"->")
         archi.write("\n}")
         archi.close()
-        os.system('dot -Tsvg grafAVL.dot -o  frontend/web/static/hash.svg')
+        os.system('dot -Tsvg hash.dot -o  frontend/web/static/hash.svg')
         
         return 'GRAFICA Tabla hash DE apuntes REALIZADA CON EXITO!!'
     return ''
