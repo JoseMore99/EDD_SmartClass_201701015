@@ -13,7 +13,6 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 Pensum = Arbol_B(5)
 Apuntes = THash(7)
-prere =[]
 def grafRed(raiz, archi):
     global prere
     for i in range(raiz.contador):
@@ -24,7 +23,8 @@ def grafRed(raiz, archi):
                 continue
             codigo = int(j)
             prerre =Pensum.buscandoB(codigo)
-            prere.append(codigo)
+            if prerre == None:
+                continue
             archi.write('"{}\\n{}"->"{}\\n{}";\n'.format(str(prerre.codigo),prerre.nombre,str(raiz.valores[i+1].codigo),raiz.valores[i+1].nombre))
     for i in raiz.hijos:
         if i == None:
@@ -284,7 +284,8 @@ def cursosEstudiantePost():
     peticion=request.json
     for i in peticion["Estudiantes"]:
         carnet = i["Carnet"]
-        apunta = avl.buscador(carnet)
+        print(carnet)
+        apunta = avl.buscador(int(carnet))
         for j in i["Años"] :
             annio = j["Año"]
             for k in j["Semestres"]:

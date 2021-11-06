@@ -110,7 +110,9 @@ class Arbol_B:
     
     def buscandoB(self,codigo):
         self.buscador(self.raiz,codigo)
-        return self.apunta
+        devolver= self.apunta
+        self.apunta= None
+        return devolver
 
     def buscador(self, raiz, codigo):
         for i in range(raiz.contador):

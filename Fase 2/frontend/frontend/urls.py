@@ -21,6 +21,7 @@ from web.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio,name='inicio'),
+    path('out', logout,name='out'),
     path('adminis', adminis,name='adminis'),
     path('registro', Registrarbtn,name='registro'),
     path('registrar', Registro,name='registrar'),

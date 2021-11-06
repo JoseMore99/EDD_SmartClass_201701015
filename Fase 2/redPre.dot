@@ -1,9 +1,13 @@
 digraph G{
 rankdir=LR
 charset="Latin1"
-"103\nMatematica Basica 2"->"150\nFisica 1";
+"112\nMatematica intermedia 2"->"118\nMatematica aplicada 1";
+"107\nMatematica intermedia 1"->"112\nMatematica intermedia 2";
+"103\nMatematica Basica 2"->"107\nMatematica intermedia 1";
 "101\nMatematica Basica 1"->"103\nMatematica Basica 2";
-"147\nFisica basica"->"150\nFisica 1";
-"101\nMatematica Basica 1"->"147\nFisica basica";
+"114\nMatematica intermedia 3"->"118\nMatematica aplicada 1";
+"107\nMatematica intermedia 1"->"114\nMatematica intermedia 3";
+"103\nMatematica Basica 2"->"107\nMatematica intermedia 1";
+"101\nMatematica Basica 1"->"103\nMatematica Basica 2";
 
 }

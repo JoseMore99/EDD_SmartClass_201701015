@@ -42,6 +42,10 @@
                 </div>
                 
             </div>
+            <form action="/out" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary">Logout</button>
+        </form>
         </div>
         {% if messages %}
     <ul class="messages">

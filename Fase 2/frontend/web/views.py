@@ -48,6 +48,9 @@ def apunte(request):
             messages.error(request, 'Ocurrió un error al enviar el Apunte.')
     return render(request,"usuarios.html",context=Actual)
 
+def logout(request):
+    return redirect("inicio")
+
 def lst_apuntes(request):
     global Actual
     apun= {
@@ -162,4 +165,22 @@ def Registrarbtn(request):
 def Registro(request):
     carnet = request.POST["car"]
     passw = request.POST["pass"]
+    dpi =request.POST["dpi"]
+    nombre =request.POST["nom"]
+    carrera = request.POST["carr"]
+    correo=request.POST["pass"]
+    edad=request.POST["edad"]
+    estu ={
+    "estudiantes":[
+        {
+            "carnet":int(carnet),
+            "DPI":int(dpi),
+            "nombre":nombre,
+            "carrera":carrera,
+            "correo":correo,
+            "password":passw,
+            "edad":int(edad)
+
+        }]}
+    requests.post("http://localhost:3000//carga",json=estu)
     return redirect("inicio")
