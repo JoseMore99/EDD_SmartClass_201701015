@@ -1,0 +1,9 @@
+digraph G{
+rankdir=LR
+charset="Latin1"
+"103\nMatematica Basica 2"->"150\nFisica 1";
+"101\nMatematica Basica 1"->"103\nMatematica Basica 2";
+"147\nFisica basica"->"150\nFisica 1";
+"101\nMatematica Basica 1"->"147\nFisica basica";
+
+}

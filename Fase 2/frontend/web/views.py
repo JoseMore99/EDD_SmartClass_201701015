@@ -88,13 +88,13 @@ def carga_apun(request):
     return render(request,"adminis.html")
 
 def carga_cursos(request):
-    JsonEstu = request.FILES["CargaApun"].read()
+    JsonEstu = request.FILES["CargaCursos"].read()
     envio = json.loads(JsonEstu.decode('utf-8'))
-    requests.post("http://localhost:3000//apuntesM",json=envio)
+    requests.post("http://localhost:3000//cursosEstudiante",json=envio)
     try:
-        messages.success(request, 'Carga de Apuntes realizado con éxito.')
+        messages.success(request, 'Carga de cursos realizado con éxito.')
     except Exception as e:
-            messages.error(request, 'Ocurrió un error al enviar el Apunte.')
+            messages.error(request, 'Ocurrió un error al enviar los cursos.')
     return render(request,"adminis.html")
 
 def carga_pensum(request):
@@ -131,6 +131,22 @@ def carga_grafo(request):
         messages.success(request, 'Reporte de Cursos realizado con éxito.')
         ctx ={
             "num":"2"
+            }
+        return render(request,"reportes.html",ctx)
+    except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar el reporte.')
+    return render(request,"adminis.html")
+
+def reporte_grafo(request):
+    envio ={
+        "tipo":7,
+        "codigo":request.POST["codigo"]
+    }
+    requests.get("http://localhost:3000//reporte",json=envio)
+    try:
+        messages.success(request, 'Reporte de Cursos realizado con éxito.')
+        ctx ={
+            "num":"3"
             }
         return render(request,"reportes.html",ctx)
     except Exception as e:

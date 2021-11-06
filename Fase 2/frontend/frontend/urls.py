@@ -31,6 +31,8 @@ urlpatterns = [
     path('cargaE',carga_estu, name='cargaE'),#carga de estudiantes
     path('cargaA',carga_apun, name='cargaA'),#carga de apuntes
     path('cargaP',carga_pensum, name='cargaP'),#carga de apuntes
+    path('cargaC',carga_cursos, name='cargaC'),#carga de apuntes
     path('reporteH',carga_hash, name='reporteH'),#carga de reporte de tabla hash
     path('reporteG',carga_grafo, name='reporteG'),#carga de reporte de tabla hash
+    path('reportePre',reporte_grafo, name='reportePre'),#carga de reporte de tabla hash
 ]

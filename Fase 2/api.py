@@ -13,8 +13,9 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 Pensum = Arbol_B(5)
 Apuntes = THash(7)
-
+prere =[]
 def grafRed(raiz, archi):
+    global prere
     for i in range(raiz.contador):
         prerre=raiz.valores[i+1].prerrequisito
         vector = prerre.split(",")
@@ -23,12 +24,25 @@ def grafRed(raiz, archi):
                 continue
             codigo = int(j)
             prerre =Pensum.buscandoB(codigo)
-            print(prerre.codigo)
-            archi.write('"{}\\n{}"->"{}\\n{}";\n'.format(str(codigo),prerre.nombre,str(raiz.valores[i+1].codigo),raiz.valores[i+1].nombre))
+            prere.append(codigo)
+            archi.write('"{}\\n{}"->"{}\\n{}";\n'.format(str(prerre.codigo),prerre.nombre,str(raiz.valores[i+1].codigo),raiz.valores[i+1].nombre))
     for i in raiz.hijos:
         if i == None:
             continue
         grafRed(i,archi)
+
+def grafPreRed(raiz, archi):
+    codigos=raiz.prerrequisito
+    vector = codigos.split(",")
+    if vector[0]=="":
+        return
+    for j in vector:
+        if j =='':
+            continue
+        codigo = int(j)
+        prerre =Pensum.buscandoB(codigo)
+        archi.write('"{}\\n{}"->"{}\\n{}";\n'.format(str(prerre.codigo),prerre.nombre,str(raiz.codigo),raiz.nombre))
+        grafPreRed(prerre,archi)
 
 
 @app.route("/")
@@ -145,6 +159,14 @@ def reportes():
         archi.write("\n}")
         archi.close()
         os.system('dot -Tpng redP.dot -o  frontend/web/static/redP.png')
+    elif peticion['tipo']==7:
+        actual =Pensum.buscandoB(int(peticion["codigo"]))
+        archi = open("redPre.dot","w")
+        archi.write("digraph G{\nrankdir=LR\n"+'charset="Latin1"\n')
+        grafPreRed(actual,archi)
+        archi.write("\n}")
+        archi.close()
+        os.system('dot -Tpng redPre.dot -o  frontend/web/static/redPre.png')
     return ''
 
 @app.route("/estudiante", methods=['POST'])
