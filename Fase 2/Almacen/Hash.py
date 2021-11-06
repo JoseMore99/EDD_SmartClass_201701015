@@ -88,6 +88,6 @@ prueba.insertar(16,"","")
 
 for i in range(len(prueba.tabla)):
     if prueba.tabla[i] is None:
-        print(str(i)+"- None")
+       # print(str(i)+"- None")
         continue
-    print(str(i)+"-"+str(prueba.tabla[i].carnet))
+   #print(str(i)+"-"+str(prueba.tabla[i].carnet))

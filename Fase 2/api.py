@@ -13,6 +13,24 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 Pensum = Arbol_B(5)
 Apuntes = THash(7)
+
+def grafRed(raiz, archi):
+    for i in range(raiz.contador):
+        prerre=raiz.valores[i+1].prerrequisito
+        vector = prerre.split(",")
+        for j in vector:
+            if j =='':
+                continue
+            codigo = int(j)
+            prerre =Pensum.buscandoB(codigo)
+            print(prerre.codigo)
+            archi.write('"{}\\n{}"->"{}\\n{}";\n'.format(str(codigo),prerre.nombre,str(raiz.valores[i+1].codigo),raiz.valores[i+1].nombre))
+    for i in raiz.hijos:
+        if i == None:
+            continue
+        grafRed(i,archi)
+
+
 @app.route("/")
 def hola():
     return "Pagina principal"
@@ -120,6 +138,13 @@ def reportes():
         os.system('dot -Tsvg hash.dot -o  frontend/web/static/hash.svg')
         
         return 'GRAFICA Tabla hash DE apuntes REALIZADA CON EXITO!!'
+    elif peticion['tipo']==6:
+        archi = open("redP.dot","w")
+        archi.write("digraph G{\nrankdir=LR\n"+'charset="Latin1"\n')
+        grafRed(Pensum.raiz,archi)
+        archi.write("\n}")
+        archi.close()
+        os.system('dot -Tpng redP.dot -o  frontend/web/static/redP.png')
     return ''
 
 @app.route("/estudiante", methods=['POST'])
@@ -298,7 +323,6 @@ def apuntesMasiva():
             Apuntes.insertar(carnet,titulos,contenido)
         
     return 'Carga masiva de apuntes competa'
-
 
 
 #URLS DE PRUEBAS UNICAMENTE 

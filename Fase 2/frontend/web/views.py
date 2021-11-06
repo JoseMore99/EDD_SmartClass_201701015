@@ -87,6 +87,26 @@ def carga_apun(request):
             messages.error(request, 'Ocurrió un error al enviar el Apunte.')
     return render(request,"adminis.html")
 
+def carga_cursos(request):
+    JsonEstu = request.FILES["CargaApun"].read()
+    envio = json.loads(JsonEstu.decode('utf-8'))
+    requests.post("http://localhost:3000//apuntesM",json=envio)
+    try:
+        messages.success(request, 'Carga de Apuntes realizado con éxito.')
+    except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar el Apunte.')
+    return render(request,"adminis.html")
+
+def carga_pensum(request):
+    JsonEstu = request.FILES["CargaPensum"].read()
+    envio = json.loads(JsonEstu.decode('utf-8'))
+    requests.post("http://localhost:3000//cursosPensum",json=envio)
+    try:
+        messages.success(request, 'Carga de cursos realizado con éxito.')
+    except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar los cursos.')
+    return render(request,"adminis.html")
+
 def carga_hash(request):
     envio ={
         "tipo":5
@@ -94,7 +114,25 @@ def carga_hash(request):
     requests.get("http://localhost:3000//reporte",json=envio)
     try:
         messages.success(request, 'Reporte de Apuntes realizado con éxito.')
-        return render(request,"reportes.html")
+        ctx ={
+            "num":"1"
+        }
+        return render(request,"reportes.html",ctx)
+    except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar el reporte.')
+    return render(request,"adminis.html")
+
+def carga_grafo(request):
+    envio ={
+        "tipo":6
+    }
+    requests.get("http://localhost:3000//reporte",json=envio)
+    try:
+        messages.success(request, 'Reporte de Cursos realizado con éxito.')
+        ctx ={
+            "num":"2"
+            }
+        return render(request,"reportes.html",ctx)
     except Exception as e:
             messages.error(request, 'Ocurrió un error al enviar el reporte.')
     return render(request,"adminis.html")

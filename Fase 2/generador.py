@@ -35,4 +35,7 @@ def graficandoB(raiz,archi):
         archi.write('{}:{}->{}\n'.format(str(hash(raiz.valores[1])),hash(i),hash(i.valores[1])))
         graficandoB(i,archi)
 
+
+
+
     

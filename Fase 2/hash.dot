@@ -2,10 +2,10 @@ digraph G{
 node [shape=square];
 b1[label=" "]
 b2[label=" "]
-rank = same{20210000001->"pendientes"->"block chain"->"tabla hash"}
 b3[label=" "]
-rank = same{20210000003->"Lab edd -18/10"->"resumen primer parcial -fisica2"}
-rank = same{20210000004->"tareas pendientes"}
 b4[label=" "]
-b1->b2->20210000001->b3->20210000003->20210000004->b4
+b5[label=" "]
+b6[label=" "]
+b7[label=" "]
+b1->b2->b3->b4->b5->b6->b7
 }

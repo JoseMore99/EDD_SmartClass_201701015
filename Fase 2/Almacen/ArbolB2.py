@@ -14,6 +14,7 @@ class Arbol_B:
     def __init__(self, orden):
         self.orden = orden
         self.raiz = hoja(5)
+        self.apunta= None
 
     #BUSCAR CAAMINO A INSERTAR NODO
     def insertar(self,valor):
@@ -50,7 +51,6 @@ class Arbol_B:
                 else:#SI NO ESTA LLENA AGREGAMOS EL VALOR
                     objeto_estatico[0] = False
                     self.AñadirHoja(PunteroHoja,objeto_estatico[1],objeto_estatico[2],camino[0])
-
 
     def buscarHoja(self,puntero, valor, camino):
         encontrado = False
@@ -107,6 +107,20 @@ class Arbol_B:
         objeto_estatico[1] = PunteroHoja.valores[PunteroHoja.contador]
         objeto_estatico[2].hijos[0] = PunteroHoja.hijos[PunteroHoja.contador]
         PunteroHoja.contador = PunteroHoja.contador -1
+    
+    def buscandoB(self,codigo):
+        self.buscador(self.raiz,codigo)
+        return self.apunta
+
+    def buscador(self, raiz, codigo):
+        for i in range(raiz.contador):
+            if raiz.valores[i+1].codigo==codigo:
+                self.apunta=raiz.valores[i+1]
+                return
+        for i in raiz.hijos:
+            if i == None:
+                continue
+            self.buscador(i,codigo) 
         
 
 #arbolB = Arbol_B(5)
