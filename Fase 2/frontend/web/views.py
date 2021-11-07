@@ -156,8 +156,27 @@ def reporte_grafo(request):
             messages.error(request, 'Ocurrió un error al enviar el reporte.')
     return render(request,"adminis.html")
 
+def reporte_grafoEstu(request):
+    envio ={
+        "tipo":8,
+        "carnet":Actual["Carnet"]
+    }
+    requests.get("http://localhost:3000//reporte",json=envio)
+    try:
+        messages.success(request, 'Reporte de Cursos realizado con éxito.')
+        ctx ={
+            "num":"4"
+            }
+        return render(request,"reportesUsu.html",ctx)
+    except Exception as e:
+            messages.error(request, 'Ocurrió un error al enviar el reporte.')
+    return render(request,"adminis.html")
+
 def volverA(request):
     return render(request,"adminis.html")
+
+def volverU(request):
+    return render(request,"usuarios.html",context=Actual)
 
 def Registrarbtn(request):
     return render(request,"registro.html")
@@ -184,3 +203,11 @@ def Registro(request):
         }]}
     requests.post("http://localhost:3000//carga",json=estu)
     return redirect("inicio")
+
+def asignar(request):
+    envio ={
+        "carnet":Actual["Carnet"],
+        "codigo":request.POST["codigo"]
+    }
+    requests.post("http://localhost:3000//cursosEstudiante1",json=envio)
+    return render(request,"usuarios.html",context=Actual)

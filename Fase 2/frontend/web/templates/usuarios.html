@@ -27,20 +27,32 @@
                         {% csrf_token %}
                     <button class="btn btn-lg btn-primary" type="submit">Realizar Apuntes</button>
                     </form>
+                    <br>
                 </div>
                 <div class="row">
                     <form action="/lstapuntes/" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                     <button class="btn btn-lg btn-primary" type="submit">Ver Apuntes Realizados</button>
                     </form>
+                    <br>
                 </div>
                 <div class="row">
-                    <button class="btn btn-lg btn-primary" type="submit">Reporte de todos los cursos previos</button>
-                </div>
-                <div class="row">
+                    <form action="/reportePreE" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
                     <button class="btn btn-lg btn-primary" type="submit">Reporte de cursos asignados</button>
+                    </form>
+                    <br>
                 </div>
-                
+                <div class="row">
+                    <h1>Asignacion</h1><br>
+                    <h2>Seleccionar codigo de curso a asignar</h2><br>
+                    <form action="/asignar" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingresar codigo del curso" name = "codigo">
+                        <button type="submit" class="btn btn-secondary">Ver</button>
+                        </form>
+                    <br>
+                </div>
             </div>
             <form action="/out" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}

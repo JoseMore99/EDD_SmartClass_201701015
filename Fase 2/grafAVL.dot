@@ -1,7 +1,0 @@
-digraph G{
-node [shape=square];
-rank = same{20210000001->"pendientes"->"block chain"->"tabla hash"}
-rank = same{20210000003->"Lab edd -18/10"->"resumen primer parcial -fisica2"}
-rank = same{20210000004->"tareas pendientes"}
-" "" "->20210000001->" "->20210000003->20210000004->" "->
-}

@@ -17,6 +17,7 @@ def grafRed(raiz, archi):
     global prere
     for i in range(raiz.contador):
         prerre=raiz.valores[i+1].prerrequisito
+        print(prerre)
         vector = prerre.split(",")
         for j in vector:
             if j =='':
@@ -25,6 +26,7 @@ def grafRed(raiz, archi):
             prerre =Pensum.buscandoB(codigo)
             if prerre == None:
                 continue
+            #[fillcolor=dodgerblue style="filled"]
             archi.write('"{}\\n{}"->"{}\\n{}";\n'.format(str(prerre.codigo),prerre.nombre,str(raiz.valores[i+1].codigo),raiz.valores[i+1].nombre))
     for i in raiz.hijos:
         if i == None:
@@ -167,6 +169,18 @@ def reportes():
         archi.write("\n}")
         archi.close()
         os.system('dot -Tpng redPre.dot -o  frontend/web/static/redPre.png')
+    elif peticion['tipo']==8:
+        carne = peticion["carnet"]
+        apunta = avl.buscador(carne)
+        apuntaAnio= apunta.estu.devolv_anio("2021")
+        archi = open("redEst.dot","w")
+        archi.write("digraph G{\nrankdir=LR\n"+'charset="Latin1"\n')
+        print(apuntaAnio.semestre.head.siguiente.contenido.abb.listado)
+        print(apuntaAnio.semestre.head.contenido.abb.listado)
+        grafRed(apuntaAnio.semestre.head.siguiente.contenido.abb.raiz,archi)
+        archi.write("\n}")
+        archi.close()
+        os.system('dot -Tpng redEst.dot -o  frontend/web/static/redEst.png')
     return ''
 
 @app.route("/estudiante", methods=['POST'])
@@ -299,6 +313,16 @@ def cursosEstudiantePost():
                     nuevo  = curso(nombre,codigo,creditos,obliga,prerre)
                     apunta.estu.insertarCurso(nuevo,semestre, annio)
                     
+    return 'Cargra de cursos de estudiantes exitosa'
+
+@app.route("/cursosEstudiante1", methods=['POST'])
+def cursosEstudiantePost1():
+    peticion=request.json
+    codigo = int(peticion["Codigo"])
+    carnet = int(peticion["Carnet"])
+    apunta = avl.buscador(carnet)
+    nuevo= Pensum.buscandoB(codigo)
+    apunta.estu.insertarCurso(nuevo,2, 2021)       
     return 'Cargra de cursos de estudiantes exitosa'
 
 @app.route("/cursosPensum", methods=['POST'])

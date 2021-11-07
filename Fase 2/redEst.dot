@@ -1,0 +1,12 @@
+digraph G{
+rankdir=LR
+charset="Latin1"
+"601\nInvestigacion de operaciones 1"->"603\nInvestigacion de operaciones 2";
+"722\nTeoria de sistemas 1"->"724\nTeoria de sistemas 2";
+"601\nInvestigacion de operaciones 1"->"724\nTeoria de sistemas 2";
+"736\nAnalisis probabilistico"->"724\nTeoria de sistemas 2";
+"772\nEstructura de datos"->"773\nManejo e implementacion de archivos";
+"796\nLenguajes formales y de programacion"->"773\nManejo e implementacion de archivos";
+"796\nLenguajes formales y de programacion"->"778\nArquitectura de computadores y ensambladores 1";
+
+}

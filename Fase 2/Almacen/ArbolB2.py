@@ -15,9 +15,11 @@ class Arbol_B:
         self.orden = orden
         self.raiz = hoja(5)
         self.apunta= None
+        self.listado=[]
 
     #BUSCAR CAAMINO A INSERTAR NODO
     def insertar(self,valor):
+        self.listado.append(valor.nombre)
         Arriba = False
         Mediana = 0
         Nodonew = None
