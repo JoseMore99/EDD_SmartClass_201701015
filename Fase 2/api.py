@@ -26,6 +26,7 @@ def grafRed(raiz, archi):
             prerre =Pensum.buscandoB(codigo)
             if prerre == None:
                 continue
+            archi.write('"'+str(raiz.valores[i+1].codigo)+'\\n'+raiz.valores[i+1].nombre+'"[fillcolor=dodgerblue style="filled"]')
             #[fillcolor=dodgerblue style="filled"]
             archi.write('"{}\\n{}"->"{}\\n{}";\n'.format(str(prerre.codigo),prerre.nombre,str(raiz.valores[i+1].codigo),raiz.valores[i+1].nombre))
     for i in raiz.hijos:
@@ -318,13 +319,13 @@ def cursosEstudiantePost():
 @app.route("/cursosEstudiante1", methods=['POST'])
 def cursosEstudiantePost1():
     peticion=request.json
-    codigo = int(peticion["Codigo"])
-    carnet = int(peticion["Carnet"])
+    codigo = int(peticion["codigo"])
+    carnet = int(peticion["carnet"])
     apunta = avl.buscador(carnet)
     nuevo= Pensum.buscandoB(codigo)
-    apunta.estu.insertarCurso(nuevo,2, 2021)       
+    apunta.estu.insertarCurso(nuevo,"2", "2021")       
     return 'Cargra de cursos de estudiantes exitosa'
-
+    
 @app.route("/cursosPensum", methods=['POST'])
 def cursosPensumPost():
     peticion = request.json

@@ -48,8 +48,10 @@
                     <h2>Seleccionar codigo de curso a asignar</h2><br>
                     <form action="/asignar" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
+                        <br>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingresar codigo del curso" name = "codigo">
-                        <button type="submit" class="btn btn-secondary">Ver</button>
+                        <br>
+                        <button type="submit" class="btn btn-secondary">Asignar</button>
                         </form>
                     <br>
                 </div>
